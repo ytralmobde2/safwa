@@ -122,10 +122,10 @@ audio{width:100%;display:block}
 .back{display:inline-flex;align-items:center;gap:8px;margin-top:24px;min-height:44px;padding:0 14px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;border-radius:0}
 /* التذييل والتنقل */
 footer{max-width:720px;margin:48px auto 0;padding:0 8px}
-.foot{background:var(--band);color:var(--band-ink);border-top:3px solid var(--brass);padding:16px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.foot{background:var(--band);color:var(--band-ink);border-top:3px solid var(--brass);padding:18px 20px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}.foot .brand{display:flex;align-items:center;gap:12px}
 .foot .logo{width:40px;height:40px}
 .foot b{font:700 28px var(--fd)}
-.foot small{margin-inline-start:auto;color:var(--band-mute);font-size:13px;text-align:end;direction:ltr}
+.foot small{color:var(--band-mute);font-size:13px;direction:ltr}
 .foot small strong{color:var(--brass)}
 nav{position:fixed;bottom:0;inset-inline:0;background:var(--band);border-top:3px solid var(--brass);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
 nav a{flex:1;max-width:240px;text-align:center;padding:10px 4px 12px;color:var(--band-ink);text-decoration:none;font-size:15px;font-weight:600;display:grid;justify-items:center;gap:2px;position:relative}
@@ -274,7 +274,7 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
 </section>
 </main>
 
-<footer><div class="foot"><svg class="logo" width="40" height="40" viewBox="0 0 120 120" aria-hidden="true"><rect x="4" y="4" width="112" height="112" rx="28" fill="none" stroke="var(--brass)" stroke-width="5"/><g fill="var(--band-ink)" opacity=".4"><rect x="20" y="55" width="6" height="10" rx="3"/><rect x="30" y="49" width="6" height="22" rx="3"/><rect x="84" y="51" width="6" height="18" rx="3"/><rect x="94" y="56" width="6" height="8" rx="3"/></g><g fill="var(--brass)"><rect x="42" y="42" width="7" height="36" rx="3.5"/><rect x="53" y="27" width="7" height="66" rx="3.5"/><rect x="64" y="34" width="7" height="52" rx="3.5"/><rect x="75" y="24" width="7" height="72" rx="3.5"/></g></svg><b>صَفْوة</b><small>Designed &amp; Developed by <strong>YTR Team</strong> © 2026</small></div></footer>
+<footer><div class="foot"><div class="brand"><svg class="logo" width="40" height="40" viewBox="0 0 120 120" aria-hidden="true"><rect x="4" y="4" width="112" height="112" rx="28" fill="none" stroke="var(--brass)" stroke-width="5"/><g fill="var(--band-ink)" opacity=".4"><rect x="20" y="55" width="6" height="10" rx="3"/><rect x="30" y="49" width="6" height="22" rx="3"/><rect x="84" y="51" width="6" height="18" rx="3"/><rect x="94" y="56" width="6" height="8" rx="3"/></g><g fill="var(--brass)"><rect x="42" y="42" width="7" height="36" rx="3.5"/><rect x="53" y="27" width="7" height="66" rx="3.5"/><rect x="64" y="34" width="7" height="52" rx="3.5"/><rect x="75" y="24" width="7" height="72" rx="3.5"/></g></svg><b>صَفْوة</b></div><small>Designed &amp; Developed by <strong>YTR Team</strong> © 2026</small></div></footer>
 
 <button id="stopBtn" class="btn pri" hidden>■ إيقاف</button>
 <div id="busy" hidden><div><b id="bMsg">جاري المعالجة…</b><div class="bar"><i id="bBar"></i></div></div></div>
