@@ -283,9 +283,9 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
 {
 const $=s=>document.querySelector(s);
 const SR=24000,HOP=0.05;
-const DEF={taslims:1,autoT:true,f1:true,f2:false,amin:false,s1:true,s2:true,enhance:true,hideGap:true,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3,theme:'auto'};
+const DEF={v:2,taslims:1,autoT:true,f1:true,f2:false,amin:false,s1:true,s2:true,enhance:true,hideGap:true,naming:'file',echo:'off',rakGap:26,minBlock:6,mergeGap:3,theme:'auto'};
 const OPTS=[['f1','الفاتحة في الركعة الأولى'],['f2','الفاتحة في الركعة الثانية'],['amin','«آمين» بعد الفاتحة'],['s1','سورة الركعة الأولى'],['s2','سورة الركعة الثانية'],['enhance','تحسين الصوت (الطنين والضجيج)'],['hideGap','إخفاء الفاصل بين الركعات']];
-const loadS=()=>{try{return Object.assign({},DEF,JSON.parse(localStorage.getItem('safwa-set')||'{}'))}catch(e){return {...DEF}}};
+const loadS=()=>{try{const o=JSON.parse(localStorage.getItem('safwa-set')||'{}');if((o.v||0)<2){delete o.rakGap;delete o.minBlock;delete o.mergeGap}return Object.assign({},DEF,o,{v:2})}catch(e){return {...DEF}}};
 let S=loadS();
 const saveS=()=>{try{localStorage.setItem('safwa-set',JSON.stringify(S))}catch(e){}};
 const fmt=t=>{t=Math.max(0,Math.round(t));const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(s).padStart(2,'0')};
@@ -309,7 +309,7 @@ function frames(x){const hop=Math.round(SR*HOP),n=Math.floor(x.length/hop),db=ne
 const pct=(a,p)=>{const s=Float32Array.from(a).sort();return s[Math.min(s.length-1,Math.floor(p*s.length))]};
 
 function analyze(c){
- const db=c.db,lo=pct(db,.1),hi=pct(db,.95),th=lo+Math.max(6,(hi-lo)*.35);c.lo=lo;c.hi=hi;
+ const db=c.db,lo=pct(db,.1),hi=pct(db,.95),th=lo+Math.max(6,(hi-lo)*.35);c.lo=lo;c.hi=hi;c.th=th;
  const ph=[];let st=-1;
  for(let f=0;f<=db.length;f++){const v=f<db.length&&db[f]>th;if(v&&st<0)st=f;if(!v&&st>=0){ph.push([st*HOP,f*HOP]);st=-1}}
  const P=[];for(const p of ph){const l=P[P.length-1];if(l&&p[0]-l[1]<0.45)l[1]=p[1];else P.push(p.slice())}
@@ -322,11 +322,13 @@ function group(c){
   if(p.length>1&&short(p[0])&&p[1][0]-p[0][1]>=0.6)p.shift();
   if(p.length>1&&short(p[p.length-1])&&p[p.length-1][0]-p[p.length-2][1]>=0.6)p.pop();
   b.s=p[0][0];b.e=p[p.length-1][1]});
- const K=B.filter(b=>b.e-b.s>=S.minBlock);
+ const vf=b=>{const a=Math.floor(b.s/HOP),z=Math.min(c.db.length,Math.ceil(b.e/HOP));let k=0;for(let i=a;i<z;i++)if(c.db[i]>c.th)k++;return k/Math.max(1,z-a)};
+ const K=B.filter(b=>b.e-b.s>=S.minBlock&&vf(b)>=0.7);
  const gaps=K.slice(1).map((b,i)=>({i:i+1,g:b.s-K[i].e})),R=c.auto?0:2*c.taslims;
  const cuts=R>1&&gaps.length>=R-1?new Set(gaps.slice().sort((a,b)=>b.g-a.g).slice(0,R-1).map(x=>x.i)):new Set(gaps.filter(x=>x.g>=S.rakGap).map(x=>x.i));
  const raks=[];let r=null;K.forEach((b,i)=>{if(i===0||cuts.has(i)){r={blocks:[]};raks.push(r)}r.blocks.push(b)});
  const regs=[];
+ raks.forEach(r=>{while(r.blocks.length>1&&r.blocks[0].e-r.blocks[0].s<20&&r.blocks[1].s-r.blocks[0].e>=4)r.blocks.shift()});
  raks.forEach((r,ri)=>{
   const s0=r.blocks[0].s,ps=r.blocks.flatMap(b=>b.p),ends=new Set(r.blocks.map(b=>b.e));let best=null;
   for(let j=1;j<ps.length;j++){const g=ps[j][0]-ps[j-1][1],t=ps[j-1][1]-s0,sc=g+(ends.has(ps[j-1][1])?1.5:0)-(t>80?0.5:0);if(t>=20&&t<=110&&(!best||sc>best.sc))best={g,sc,a:ps[j-1][1],b:ps[j][0]}}
