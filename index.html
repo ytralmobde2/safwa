@@ -3,32 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0e5a44">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%230e5a44'/%3E%3Cpath d='M24 7.5c5.6 7.4 12.5 13.6 12.5 21.2a12.5 12.5 0 0 1-25 0C11.5 21.1 18.4 14.9 24 7.5z' fill='%23fff'/%3E%3Cg fill='%23c9962e'%3E%3Crect x='16.6' y='27' width='3' height='6' rx='1.5'/%3E%3Crect x='22.5' y='22' width='3' height='16' rx='1.5'/%3E%3Crect x='28.4' y='25' width='3' height='10' rx='1.5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%230e5a44'/%3E%3Cpath d='M24 7.5c5.6 7.4 12.5 13.6 12.5 21.2a12.5 12.5 0 0 1-25 0C11.5 21.1 18.4 14.9 24 7.5z' fill='%23fff'/%3E%3Cg fill='%23c9962e'%3E%3Crect x='16.6' y='27' width='3' height='6' rx='1.5'/%3E%3Crect x='22.5' y='22' width='3' height='16' rx='1.5'/%3E%3Crect x='28.4' y='25' width='3' height='10' rx='1.5'/%3E%3C/g%3E%3C/svg%3E">
+<script>try{var t=JSON.parse(localStorage.getItem("safwa-set")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>صَفْوة — قصّ التلاوات</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE: هادئ ووقور، أداة عمل للمشرفين والأئمة
    IDEA: محراب — قوس يحتضن التسجيل، والخط الزمني كسطر مصحف ملوّن
-   PICTURE: الخط الزمني للتسجيل بألوان: الفاتحة ذهبي، السورة لازوردي، المحذوف رمادي
-   COLOUR and TYPE: رمل فاتح + لازوردي + ذهبي، نسخ للعناوين وبليكس للنص
+   PICTURE: الخط الزمني للتسجيل بألوان: الفاتحة ذهبي، السورة أخضر، المحذوف رمادي
+   COLOUR and TYPE: أبيض دافئ + أخضر زمردي + ذهبي، نهاري وليلي، المسيري للعناوين وريدكس للنص
    LAYOUT: عمود واحد للجوال، شريط تنقّل سفلي بثلاث تبويبات */
 :root{color-scheme:light dark;
---bg:light-dark(#f4efe4,#0d1626);--card:light-dark(#fffdf7,#152238);--ink:light-dark(#1a2232,#ece6d8);--mute:light-dark(#6a6862,#9aa4b5);--line:light-dark(#e2dacb,#24344f);
---lap:light-dark(#1d3d72,#8fb2ec);--lapS:light-dark(#dde6f5,#1c3157);--gold:light-dark(#a87b22,#e0b85c);--goldS:light-dark(#f3e6c6,#3a3020);--warn:light-dark(#a33a2a,#ff9b85);--on:light-dark(#fff,#0d1626)}
+--bg:light-dark(#f3f1e9,#0a1813);--card:light-dark(#fffefa,#10241c);--ink:light-dark(#15241e,#e8efe9);--mute:light-dark(#5f6b64,#93a89d);--line:light-dark(#dde3da,#1e3a2f);
+--lap:light-dark(#0e5a44,#5fd3a2);--lapS:light-dark(#dcefe5,#133a2c);--gold:light-dark(#a87b22,#e0b85c);--goldS:light-dark(#f3e6c6,#33301c);--warn:light-dark(#a33a2a,#ff9b85);--on:light-dark(#fff,#0a1813)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:clip;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-h1,h2,h3{font-family:"Noto Naskh Arabic",serif;line-height:1.2;margin:0;text-wrap:balance}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Readex Pro",system-ui,sans-serif;overflow-x:clip;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:"El Messiri",serif;line-height:1.25;margin:0;text-wrap:balance}
 header{display:flex;align-items:center;gap:12px;padding:18px max(5vw,16px) 6px;max-width:760px;margin:auto}
-header h1{font-size:32px;color:var(--lap)}header p{margin:0;color:var(--mute);font-size:14px}
+.logo{flex:none;filter:drop-shadow(0 4px 10px #0e5a4433)}
+header h1{font-size:34px;letter-spacing:0;color:var(--lap)}header p{margin:0;color:var(--mute);font-size:14px}
 main{max-width:760px;margin:auto;padding:8px max(4vw,14px) 24px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-block:14px}
 h2{font-size:24px;margin-bottom:6px}h3{font-size:19px}
 .mute{color:var(--mute);font-size:14px}
 .drop{display:block;position:relative;cursor:pointer;text-align:center;padding:0;border:0;background:none}
 .drop svg{width:100%;max-width:520px;height:auto;display:block;margin:auto}
-.drop .tx{position:absolute;inset:34% 18% auto;display:grid;gap:4px}
-.drop b{font:700 clamp(19px,4.6vw,24px) "Noto Naskh Arabic",serif;color:var(--lap)}
+.drop .tx{position:absolute;inset:27% 16% auto;display:grid;gap:2px}.drop .tx .mute{font-size:13px;line-height:1.4}
+.drop b{font:700 clamp(19px,4.6vw,24px) "El Messiri",serif;color:var(--lap)}
 .drop.over svg .arch{fill:var(--lapS)}
 input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-block:12px}
@@ -77,6 +82,7 @@ nav{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px
 nav a{flex:1;max-width:220px;text-align:center;padding:10px 4px 12px;color:var(--mute);text-decoration:none;font-size:14px;display:grid;justify-items:center;gap:2px}
 nav a svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8}
 nav a[aria-current=page]{color:var(--lap);font-weight:600}
+#themeBtn{border-radius:50%;color:var(--lap)}#themeBtn .sun{display:none}.isdark #themeBtn .sun{display:inline}.isdark #themeBtn .moon{display:none}
 footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}footer b{color:var(--lap);font-weight:600}
 #busy{position:fixed;inset:0;background:#0007;display:grid;place-items:center;z-index:9;padding:20px}
 #busy[hidden]{display:none}
@@ -90,8 +96,9 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}
 </head>
 <body>
 <header>
-<svg width="40" height="48" viewBox="0 0 40 48" aria-hidden="true"><path d="M4 46V22C4 11 12 4 20 2c8 2 16 9 16 20v24z" fill="var(--lap)"/><path d="M11 46V25c0-6 4-11 9-12.5 5 1.5 9 6.5 9 12.5v21z" fill="var(--gold)"/></svg>
-<div><h1>صَفْوة</h1><p>قصّ تسجيلات الصلاة وإبقاء التلاوة — على جهازك</p></div>
+<svg class="logo" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="var(--lap)"/><path d="M24 7.5c5.6 7.4 12.5 13.6 12.5 21.2a12.5 12.5 0 0 1-25 0C11.5 21.1 18.4 14.9 24 7.5z" fill="var(--on)"/><g fill="var(--gold)"><rect x="16.6" y="27" width="3" height="6" rx="1.5"/><rect x="22.5" y="22" width="3" height="16" rx="1.5"/><rect x="28.4" y="25" width="3" height="10" rx="1.5"/></g></svg>
+<div style="flex:1"><h1>صَفْوة</h1><p>قصّ تسجيلات الصلاة وإبقاء التلاوة — على جهازك</p></div>
+<button class="sq" id="themeBtn" aria-label="تبديل الوضع النهاري والليلي" title="الوضع النهاري / الليلي"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path class="moon" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg></button>
 </header>
 
 <main>
@@ -104,7 +111,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}
     <g fill="var(--gold)" opacity=".85"><rect x="150" y="226" width="6" height="22" rx="3"/><rect x="164" y="214" width="6" height="46" rx="3"/><rect x="178" y="222" width="6" height="30" rx="3"/><rect x="192" y="208" width="6" height="58" rx="3"/></g>
     <g fill="var(--lap)"><rect x="214" y="218" width="6" height="38" rx="3"/><rect x="228" y="204" width="6" height="66" rx="3"/><rect x="242" y="214" width="6" height="46" rx="3"/><rect x="256" y="200" width="6" height="74" rx="3"/><rect x="270" y="212" width="6" height="50" rx="3"/><rect x="284" y="206" width="6" height="62" rx="3"/><rect x="298" y="220" width="6" height="34" rx="3"/><rect x="312" y="210" width="6" height="54" rx="3"/><rect x="326" y="222" width="6" height="30" rx="3"/><rect x="340" y="214" width="6" height="46" rx="3"/><rect x="354" y="228" width="6" height="18" rx="3"/></g>
    </svg>
-   <span class="tx"><b>أضف تسجيل الصلاة</b><span class="mute">اسحب الملف هنا أو اضغط للاختيار · m4a أو mp3 أو wav · يمكنك اختيار أكثر من ملف</span></span>
+   <span class="tx"><b>أضف تسجيل الصلاة</b><span class="mute">اسحب الملف هنا أو اضغط للاختيار</span><span class="mute" dir="ltr">m4a · mp3 · wav</span></span>
   </label>
   <p class="mute" id="status" role="status" style="text-align:center;margin:6px 0 0">الملفات تُعالج داخل متصفحك ولا تُرفع إلى أي مكان.</p>
  </div>
@@ -162,6 +169,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}
   <div class="row"><label for="pT">عدد التسليمات الافتراضي</label><input type="number" id="pT" min="1" max="20"></div>
   <div class="row"><label for="pF">الفاتحة</label><select id="pF"><option value="0">بدون الفاتحة</option><option value="1">مع الفاتحة</option></select></div>
   <div class="row"><label for="pN">تسمية التلاوة</label><select id="pN"><option value="file">اسم الملف</option><option value="date">تاريخ التسجيل</option></select></div>
+  <div class="row"><label>المظهر</label><div class="seg" id="thSeg"><button data-v="light">نهاري</button><button data-v="dark">ليلي</button><button data-v="auto">حسب الجهاز</button></div></div>
   <div class="row"><label for="pE">الصدى</label><select id="pE"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
   <details><summary>إعدادات متقدمة للكشف</summary>
    <div class="row"><label for="pG">أقل فاصل بين ركعتين (ثانية)</label><input type="number" id="pG" min="10" max="120"></div>
@@ -197,7 +205,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}
 {
 const $=s=>document.querySelector(s);
 const SR=24000,HOP=0.05;
-const DEF={taslims:1,withFatiha:false,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3};
+const DEF={taslims:1,withFatiha:false,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3,theme:'auto'};
 const loadS=()=>{try{return Object.assign({},DEF,JSON.parse(localStorage.getItem('safwa-set')||'{}'))}catch(e){return {...DEF}}};
 let S=loadS();
 const saveS=()=>{try{localStorage.setItem('safwa-set',JSON.stringify(S))}catch(e){}};
@@ -412,7 +420,17 @@ function fillP(){for(const [id,k] of Object.entries(P)){const el=$('#'+id);el.va
 for(const [id,k] of Object.entries(P))$('#'+id).onchange=e=>{let v=e.target.value;if(k==='withFatiha')v=v==='1';else if(typeof DEF[k]==='number'){v=+v;if(!isFinite(v)||v<=0){v=DEF[k];e.target.value=v}}S[k]=v;saveS();if(cur&&['rakGap','minBlock','mergeGap'].includes(k)){group(cur);refresh()}};
 $('#reset').onclick=()=>{S={...DEF};saveS();fillP();toast('استُعيدت الإعدادات الافتراضية')};
 
-fillP();renderM();route();dl();
+const mq=matchMedia('(prefers-color-scheme: dark)');
+function applyTheme(){const t=S.theme,root=document.documentElement;if(t==='light'||t==='dark')root.dataset.theme=t;else delete root.dataset.theme;
+ const dark=t==='dark'||(t!=='light'&&(root.dataset.theme==='dark'||(!root.dataset.theme&&mq.matches)));document.body.classList.toggle('isdark',dark);
+ const m=document.querySelector('meta[name=theme-color]');if(m)m.content=dark?'#0a1813':'#0e5a44';
+ $('#thSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===t)));requestAnimationFrame(draw)}
+const setTheme=t=>{S.theme=t;saveS();applyTheme()};
+$('#themeBtn').onclick=()=>setTheme(document.body.classList.contains('isdark')?'light':'dark');
+$('#thSeg').onclick=e=>{const b=e.target.closest('button');if(b)setTheme(b.dataset.v)};
+mq.addEventListener&&mq.addEventListener('change',applyTheme);
+const _reset=$('#reset').onclick;$('#reset').onclick=()=>{_reset();applyTheme()};
+applyTheme();fillP();renderM();route();dl();
 }
 </script>
 </body>
