@@ -522,10 +522,17 @@ async function renderLib(){
  libCache.sort((a,b)=>s==='old'?a.created-b.created:s==='name'?a.name.localeCompare(b.name,'ar'):s==='dur'?b.dur-a.dur:b.created-a.created);
  $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="dt">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button class="del" data-a="del" data-id="${esc(it.id)}">حذف</button></div></div>`).join(''):'<div class="empty"><b>لا توجد تلاوات محفوظة بعد</b><p>بعد القص اضغط «حفظ في مكتبتي» لتظهر هنا مرتبة بالاسم والتاريخ والمدة.</p></div>'}
 $('#sort').onchange=renderLib;
+function playItem(it){stop();const p=$('#player'),type=it.ext==='mp4'?'audio/mp4':'audio/wav';urls.forEach(u=>URL.revokeObjectURL(u));
+ let step=0;const setSrc=b=>{const u=URL.createObjectURL(b);urls.push(u);p.src=u;p.load();p.play().catch(()=>{})};
+ p.onerror=async()=>{step++;try{
+  if(step===1){setSrc(new Blob([await it.blob.arrayBuffer()],{type}))}
+  else if(step===2){busy('جاري تجهيز التشغيل…',.5);const x=await decode(it.blob);busy();setSrc(wav(x,SR))}
+  else toast('تعذّر تشغيل الملف، جرّب «تنزيل»')}catch(e){busy();toast('تعذّر تشغيل الملف، جرّب «تنزيل»')}};
+ p.hidden=false;setSrc(it.blob.type?it.blob:new Blob([it.blob],{type}))}
 $('#mToggle').onclick=()=>{$('#mCard').hidden=!$('#mCard').hidden;if(!$('#mCard').hidden)$('#mCard').scrollIntoView({behavior:'smooth'})};
 $('#lib').onclick=async e=>{
  const b=e.target.closest('button');if(!b)return;const it=libCache.find(x=>x.id===b.dataset.id);if(!it)return;
- if(b.dataset.a==='play'){stop();const p=$('#player');urls.forEach(u=>URL.revokeObjectURL(u));urls=[URL.createObjectURL(it.blob)];p.src=urls[0];p.hidden=false;p.play().catch(()=>{})}
+ if(b.dataset.a==='play')playItem(it);
  if(b.dataset.a==='dl')download(it.name,it.blob,it.ext);
  if(b.dataset.a==='mg'){mlist.push({name:it.name,blob:it.blob,dur:it.dur});$('#mCard').hidden=false;renderM();toast('أُضيفت إلى الدمج')}
  if(b.dataset.a==='del'){if(b.dataset.c){await delItem(it.id);renderLib()}else{b.dataset.c=1;b.textContent='تأكيد الحذف'}}};
