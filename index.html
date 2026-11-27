@@ -3,225 +3,303 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0e5a44">
+<meta name="theme-color" content="#0e4a3d">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='32' fill='%230e5a44'/%3E%3Cg fill='%23fff' opacity='.35'%3E%3Crect x='18' y='56' width='5' height='8' rx='2.5'/%3E%3Crect x='27' y='50' width='5' height='20' rx='2.5'/%3E%3Crect x='88' y='52' width='5' height='16' rx='2.5'/%3E%3Crect x='97' y='57' width='5' height='6' rx='2.5'/%3E%3C/g%3E%3Cg fill='%23e0b85c'%3E%3Crect x='39' y='44' width='6' height='32' rx='3'/%3E%3Crect x='50' y='30' width='6' height='60' rx='3'/%3E%3Crect x='61' y='36' width='6' height='48' rx='3'/%3E%3Crect x='72' y='26' width='6' height='68' rx='3'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='32' fill='%230e5a44'/%3E%3Cg fill='%23fff' opacity='.35'%3E%3Crect x='18' y='56' width='5' height='8' rx='2.5'/%3E%3Crect x='27' y='50' width='5' height='20' rx='2.5'/%3E%3Crect x='88' y='52' width='5' height='16' rx='2.5'/%3E%3Crect x='97' y='57' width='5' height='6' rx='2.5'/%3E%3C/g%3E%3Cg fill='%23e0b85c'%3E%3Crect x='39' y='44' width='6' height='32' rx='3'/%3E%3Crect x='50' y='30' width='6' height='60' rx='3'/%3E%3Crect x='61' y='36' width='6' height='48' rx='3'/%3E%3Crect x='72' y='26' width='6' height='68' rx='3'/%3E%3C/g%3E%3C/svg%3E">
-<script>try{var t=JSON.parse(localStorage.getItem("safwa-set")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>صَفْوة — قصّ التلاوات</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var t=JSON.parse(localStorage.getItem("safwa-set")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
-/* VOICE: هادئ ووقور، أداة عمل للمشرفين والأئمة
-   IDEA: محراب — قوس يحتضن التسجيل، والخط الزمني كسطر مصحف ملوّن
-   PICTURE: الخط الزمني للتسجيل بألوان: الفاتحة ذهبي، السورة أخضر، المحذوف رمادي
-   COLOUR and TYPE: أبيض دافئ + أخضر زمردي + ذهبي، نهاري وليلي، المسيري للعناوين وريدكس للنص
-   LAYOUT: عمود واحد للجوال، شريط تنقّل سفلي بثلاث تبويبات */
-:root{color-scheme:light dark;
---bg:light-dark(#f3f1e9,#0a1813);--card:light-dark(#fffefa,#10241c);--ink:light-dark(#15241e,#e8efe9);--mute:light-dark(#5f6b64,#93a89d);--line:light-dark(#dde3da,#1e3a2f);
---lap:light-dark(#0e5a44,#5fd3a2);--lapS:light-dark(#dcefe5,#133a2c);--gold:light-dark(#a87b22,#e0b85c);--goldS:light-dark(#f3e6c6,#33301c);--warn:light-dark(#a33a2a,#ff9b85);--on:light-dark(#fff,#0a1813)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+:root{--bg:#fff;--panel:#f6f8f7;--ink:#12201c;--muted:#566761;--faint:#9aa7a2;--line:#dce3e0;--line2:#b4c1bb;--accent:#0f5a49;--accent-ink:#fff;--accent-soft:#e5f0ec;--cut:#a33a2b;--band:#0e4a3d;--band-ink:#f4f1e6;--band-mute:#bcd3ca;--brass:#c9a45c;--fatiha:#c9a45c;--fatiha-soft:#f5ecd9;
+--fd:'Amiri','Traditional Arabic',serif;--fb:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;color-scheme:light}
+:root[data-theme=dark]{--bg:#0a0e0d;--panel:#111716;--ink:#ece7da;--muted:#a8a496;--faint:#6c6a60;--line:#222b28;--line2:#38443f;--accent:#c9a45c;--accent-ink:#15110a;--accent-soft:#2a2417;--cut:#dc8a76;--band:#121b17;--band-ink:#ece7da;--band-mute:#a8a496;--fatiha:#7fc4a8;--fatiha-soft:#14241e;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a0e0d;--panel:#111716;--ink:#ece7da;--muted:#a8a496;--faint:#6c6a60;--line:#222b28;--line2:#38443f;--accent:#c9a45c;--accent-ink:#15110a;--accent-soft:#2a2417;--cut:#dc8a76;--band:#121b17;--band-ink:#ece7da;--band-mute:#a8a496;--fatiha:#7fc4a8;--fatiha-soft:#14241e;color-scheme:dark}}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Readex Pro",system-ui,sans-serif;overflow-x:clip;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-h1,h2,h3{font-family:"El Messiri",serif;line-height:1.25;margin:0;text-wrap:balance}
-header{display:flex;align-items:center;gap:12px;padding:18px max(5vw,16px) 6px;max-width:760px;margin:auto}
-.logo{flex:none;filter:drop-shadow(0 4px 10px #0e5a4433)}
-header h1{font-size:34px;letter-spacing:0;color:var(--lap)}header p{margin:0;color:var(--mute);font-size:14px}
-main{max-width:760px;margin:auto;padding:8px max(4vw,14px) 24px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-block:14px}
-h2{font-size:24px;margin-bottom:6px}h3{font-size:19px}
-.mute{color:var(--mute);font-size:14px}
-.drop{display:block;position:relative;cursor:pointer;text-align:center;padding:0;border:0;background:none}
-.drop svg{width:100%;max-width:520px;height:auto;display:block;margin:auto}
-.drop .tx{position:absolute;inset:27% 16% auto;display:grid;gap:2px}.drop .tx .mute{font-size:13px;line-height:1.4}
-.drop b{font:700 clamp(19px,4.6vw,24px) "El Messiri",serif;color:var(--lap)}
-.drop.over svg .arch{fill:var(--lapS)}
+[hidden]{display:none!important}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 var(--fb);overflow-x:clip;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:var(--fd);margin:0;line-height:1.2;font-weight:700}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:720px;margin:auto;padding:0 16px}
+/* الشريط العلوي */
+.top{max-width:720px;margin:8px auto 0;padding:0 8px}
+.hero{position:relative;overflow:hidden;background:var(--band);color:var(--band-ink);border-bottom:3px solid var(--brass);display:flex;align-items:center;gap:12px;padding:22px 20px;min-height:118px}
+.hero .bgart{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.09}
+.hero h1{font-size:46px;color:var(--band-ink);position:relative}
+.hero .logo{width:54px;height:54px;flex:none;position:relative}
+.hero .sp{flex:1}
+.ibtn{position:relative;width:44px;height:44px;border-radius:50%;border:2px solid var(--band-ink);background:none;color:var(--band-ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.ibtn svg{width:22px;height:22px}
+.ibtn .sun{display:none}.isdark .ibtn .sun{display:block}.isdark .ibtn .moon{display:none}
+/* البطاقات */
+.card{margin:36px 0 0;border:1px solid var(--line2);background:var(--bg)}
+.ch{background:var(--band);color:var(--band-ink);border-bottom:3px solid var(--brass);padding:14px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.ch h2{font-size:28px;display:flex;align-items:center;gap:10px;flex:1}
+.ch h2::before{content:"";width:11px;height:11px;background:var(--brass);transform:rotate(45deg);flex:none}
+.ch .sub{flex-basis:100%;color:var(--band-mute);font-size:14px}
+.ch .st{color:var(--band-mute);font-size:14px}
+.ch select,.ch .hb{min-height:38px;border:1px solid var(--band-mute);background:transparent;color:var(--band-ink);padding:0 12px;border-radius:0}
+.ch .hb{border-color:var(--brass);cursor:pointer}
+.ch select option{color:#12201c}
+.cb{padding:18px}
+.drop{display:block;border:1px dashed var(--line2);background:var(--panel);padding:26px 22px;margin:0;cursor:pointer}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop b{display:block;font-size:19px;margin-bottom:4px}
+.drop p{margin:0 0 18px;color:var(--muted)}
 input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-block:12px}
-.stats div{background:var(--bg);border-radius:12px;padding:10px;text-align:center}
-.stats b{display:block;font-size:22px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.stats span{font-size:13px;color:var(--mute)}
-.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;padding-block:10px;border-top:1px solid var(--line)}
-.row label{font-weight:500}
-.step{display:flex;align-items:center;gap:4px}
-.step output{min-width:2.2em;text-align:center;font-size:20px;font-weight:600}
-button,select,input[type=text],input[type=number]{font:inherit;font-size:16px;color:inherit}
-button{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer}
-button:focus-visible,select:focus-visible,input:focus-visible,.drop:focus-within svg{outline:3px solid var(--gold);outline-offset:2px}
-button.pri{background:var(--lap);color:var(--on);border-color:var(--lap);font-weight:600}
-button.sq{width:44px;padding:0;font-size:22px}
-button:disabled{opacity:.45;cursor:default}
-select,input[type=text],input[type=number]{min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg);padding:0 12px}
-input[type=text]{width:100%}input[type=number]{width:6em}
-.seg{display:inline-flex;background:var(--bg);border-radius:12px;padding:3px;gap:3px;flex-wrap:wrap}
-.seg button{border:0;background:none;min-height:38px;padding:0 12px}
-.seg button[aria-pressed=true]{background:var(--card);box-shadow:0 1px 3px #0002;font-weight:600;color:var(--lap)}
-.fig{position:relative;height:120px;margin-top:10px;border-radius:12px;overflow:hidden;background:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;border-radius:0;font-weight:500}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.btn.block{display:flex;width:100%}
+.btn:disabled{opacity:.4;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible,.drop:focus-within{outline:3px solid var(--brass);outline-offset:2px}
+.status{margin:12px 0 0;color:var(--muted);font-size:14px}
+/* سجل القص */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.cell{padding:12px 18px;border-inline-start:1px solid var(--line)}.cell:first-child{border-inline-start:0}
+.cell span{display:block;color:var(--muted);font-size:13px}.cell b{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fileRow{padding:12px 18px}.fileRow span{display:block;color:var(--muted);font-size:13px}
+.fileRow input{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;font-size:16px;font-weight:600;padding:4px 0;min-height:36px;border-radius:0}
+.sec{padding:14px 18px;border-top:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.row>label,.lbl{font-weight:600;font-size:16px}
+.note{color:var(--muted);font-size:13px;margin-top:4px}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:44px;height:44px;border:1px solid var(--line2);background:var(--bg);font-size:20px;cursor:pointer;border-radius:0}
+.step output{font-size:22px;font-weight:600;min-width:1.2em;text-align:center}
+h3{font-size:22px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chips button{min-height:42px;padding:0 14px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;border-radius:0}
+.chips button[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer;min-height:48px}
+.opt input,.chk{width:22px;height:22px;accent-color:var(--accent);flex:none;margin:0}
+select.sel{min-height:44px;border:1px solid var(--line2);background:var(--bg);padding:0 10px;border-radius:0}
+details.more{border-top:1px solid var(--line);background:var(--panel)}
+details.more>summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"";width:9px;height:9px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);margin-top:-4px;transition:transform .15s}
+details.more[open]>summary::before{transform:rotate(135deg);margin-top:4px}
+details.more>summary small{margin-inline-start:auto;color:var(--muted);font-weight:400;font-size:13px}
+.mbody{padding:0 18px 18px}
+.fig{position:relative;height:110px;background:var(--bg);border:1px solid var(--line)}
 .fig canvas{position:absolute;inset:0;width:100%;height:100%;cursor:pointer}
-.ends{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--mute);margin-top:6px}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-inline-end:5px}
-.regs{list-style:none;margin:8px 0 0;padding:0}
-.regs li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
-.regs .k{width:8px;align-self:stretch;border-radius:4px}
-.regs .m{flex:1}.regs .m small{display:block;color:var(--mute);font-variant-numeric:tabular-nums}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin:6px 0 4px}
+.legend i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-inline-end:5px}
+.regs{list-style:none;margin:6px 0 0;padding:0}
+.regs li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.regs .k{width:6px;align-self:stretch}
+.regs .m{flex:1}.regs .m small{display:block;color:var(--muted);font-variant-numeric:tabular-nums}
 .regs li.off .m{opacity:.5;text-decoration:line-through}
-.sw{appearance:none;width:48px;height:28px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0}
-.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:inset .15s}
-.sw:checked{background:var(--lap)}.sw:checked::after{inset-inline-start:23px}
-.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.acts button{flex:1 1 140px}
-.note{background:var(--goldS);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:10px}
-.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:12px 0;border-top:1px solid var(--line)}
-.item .n{font-weight:600;overflow-wrap:anywhere}.item .b{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
-.item .b button{min-height:40px;padding:0 12px;font-size:15px}
-.item .d{font-variant-numeric:tabular-nums;color:var(--mute);white-space:nowrap}
-audio{width:100%;margin-top:8px}
-.empty{text-align:center;color:var(--mute);padding:24px 8px}
-details{border-top:1px solid var(--line);padding:10px 0}summary{cursor:pointer;font-weight:600;min-height:32px}
-details p{margin:.4em 0;color:var(--ink)}
-nav{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
-nav a{flex:1;max-width:220px;text-align:center;padding:10px 4px 12px;color:var(--mute);text-decoration:none;font-size:14px;display:grid;justify-items:center;gap:2px}
-nav a svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8}
-nav a[aria-current=page]{color:var(--lap);font-weight:600}
-#themeBtn{border-radius:50%;color:var(--lap)}#themeBtn .sun{display:none}.isdark #themeBtn .sun{display:inline}.isdark #themeBtn .moon{display:none}
-footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}footer b{color:var(--lap);font-weight:600}
-#busy{position:fixed;inset:0;background:#0007;display:grid;place-items:center;z-index:9;padding:20px}
+.play{width:40px;height:40px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;flex:none;border-radius:0}
+.acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.acts .btn{border:0;border-inline-start:1px solid var(--line);min-height:54px}.acts .btn:first-child{border-inline-start:0}
+.acts .btn.pri{border-color:var(--accent)}
+/* المكتبة */
+.empty{border:1px dashed var(--line2);padding:20px;margin:18px}
+.empty b{display:block;font-size:17px;margin-bottom:4px}.empty p{margin:0;color:var(--muted)}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.item .n{font-weight:600;overflow-wrap:anywhere}.item .d{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.item .dt{grid-column:1/-1;color:var(--muted);font-size:13px}
+.item .b{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.item .b button{min-height:38px;padding:0 12px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;font-size:14px;border-radius:0}
+.item .b .del{color:var(--cut)}
+audio{width:100%;display:block}
+.mrow{display:flex;align-items:center;gap:8px;padding:10px 18px;border-bottom:1px solid var(--line)}
+.mrow .n{flex:1;font-weight:600}.mrow button{width:40px;height:40px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;border-radius:0}
+/* الإعدادات */
+.link{display:flex;align-items:center;gap:12px;width:100%;padding:16px 18px;border:0;border-bottom:1px solid var(--line);background:var(--panel);cursor:pointer;text-align:start}
+.link:last-child{border-bottom:0}.nochev::after{display:none}
+.link .ic{width:26px;height:26px;border:2px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass);font-weight:700;font-size:14px;flex:none}
+.link b{font-size:17px}.link span{color:var(--muted);font-size:14px;flex:1}
+.link::after{content:"";width:9px;height:9px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);flex:none}
+.prow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);min-height:52px}
+.prow label{flex:1}
+.prow input[type=number]{width:5.5em;min-height:42px;border:1px solid var(--line2);background:var(--bg);padding:0 10px;border-radius:0}
+.guide h3{font-size:22px;margin:18px 0 6px;color:var(--accent)}
+.guide p,.guide li{margin:.3em 0}
+.back{display:inline-flex;align-items:center;gap:8px;margin-top:24px;min-height:44px;padding:0 14px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;border-radius:0}
+/* التذييل والتنقل */
+footer{max-width:720px;margin:48px auto 0;padding:0 8px}
+.foot{background:var(--band);color:var(--band-ink);border-top:3px solid var(--brass);padding:16px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.foot .logo{width:40px;height:40px}
+.foot b{font:700 28px var(--fd)}
+.foot small{margin-inline-start:auto;color:var(--band-mute);font-size:13px;text-align:end;direction:ltr}
+.foot small strong{color:var(--brass)}
+nav{position:fixed;bottom:0;inset-inline:0;background:var(--band);border-top:3px solid var(--brass);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav a{flex:1;max-width:240px;text-align:center;padding:10px 4px 12px;color:var(--band-ink);text-decoration:none;font-size:15px;font-weight:600;display:grid;justify-items:center;gap:2px;position:relative}
+nav a svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7}
+nav a[aria-current=page]{color:var(--brass)}
+nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inline:22%;height:3px;background:var(--band-ink)}
+#busy{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:9;padding:20px}
 #busy[hidden]{display:none}
-#busy div{background:var(--card);border-radius:18px;padding:22px;width:min(360px,100%);text-align:center}
-.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}
-#toast{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom));inset-inline:0;margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;z-index:10;opacity:0;transition:opacity .2s;pointer-events:none}
+#busy div{background:var(--bg);border-top:3px solid var(--brass);padding:22px;width:min(360px,100%);text-align:center}
+.bar{height:6px;background:var(--line);margin-top:14px}.bar i{display:block;height:100%;width:0;background:var(--brass);transition:width .2s}
+#toast{position:fixed;bottom:calc(104px + env(safe-area-inset-bottom));inset-inline:0;margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;z-index:10;opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.on{opacity:1}
-#stopBtn{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom));inset-inline-start:16px;z-index:6}
+#stopBtn{position:fixed;bottom:calc(104px + env(safe-area-inset-bottom));inset-inline-start:16px;z-index:6}
+@media (max-width:520px){.hero h1{font-size:40px}.ch h2{font-size:25px}.opts{grid-template-columns:minmax(0,1fr)}.cell{padding:10px 12px}.cell b{font-size:18px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header>
-<svg class="logo" width="48" height="48" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="32" fill="#0e5a44"/><g fill="#fff" opacity=".35"><rect x="18" y="56" width="5" height="8" rx="2.5"/><rect x="27" y="50" width="5" height="20" rx="2.5"/><rect x="88" y="52" width="5" height="16" rx="2.5"/><rect x="97" y="57" width="5" height="6" rx="2.5"/></g><g fill="#e0b85c"><rect x="39" y="44" width="6" height="32" rx="3"/><rect x="50" y="30" width="6" height="60" rx="3"/><rect x="61" y="36" width="6" height="48" rx="3"/><rect x="72" y="26" width="6" height="68" rx="3"/></g></svg>
-<div style="flex:1"><h1>صَفْوة</h1><p>قصّ تسجيلات الصلاة وإبقاء التلاوة — على جهازك</p></div>
-<button class="sq" id="themeBtn" aria-label="تبديل الوضع النهاري والليلي" title="الوضع النهاري / الليلي"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path class="moon" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg></button>
-</header>
+<div class="top">
+ <div class="hero">
+  <svg class="bgart" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M40 130V60c0-30 22-48 46-56 24 8 46 26 46 56v70"/><path d="M58 130V64c0-20 14-34 28-40 14 6 28 20 28 40v66"/><path d="M270 130V50c0-36 26-58 56-66 30 8 56 30 56 66v80"/></g></svg>
+  <svg class="logo" width="54" height="54" viewBox="0 0 120 120" aria-hidden="true"><rect x="4" y="4" width="112" height="112" rx="28" fill="none" stroke="var(--brass)" stroke-width="5"/><g fill="var(--band-ink)" opacity=".4"><rect x="20" y="55" width="6" height="10" rx="3"/><rect x="30" y="49" width="6" height="22" rx="3"/><rect x="84" y="51" width="6" height="18" rx="3"/><rect x="94" y="56" width="6" height="8" rx="3"/></g><g fill="var(--brass)"><rect x="42" y="42" width="7" height="36" rx="3.5"/><rect x="53" y="27" width="7" height="66" rx="3.5"/><rect x="64" y="34" width="7" height="52" rx="3.5"/><rect x="75" y="24" width="7" height="72" rx="3.5"/></g></svg>
+  <h1>صَفْوة</h1>
+  <span class="sp"></span>
+  <button class="ibtn" id="themeBtn" aria-label="الوضع النهاري أو الليلي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path class="moon" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg></button>
+  <a class="ibtn" href="#guide" aria-label="دليل الاستخدام" style="text-decoration:none;font:700 22px var(--fb)">?</a>
+ </div>
+</div>
 
-<main>
+<main class="wrap">
 <section id="v-record">
- <div class="card" id="pick">
-  <label class="drop" id="drop">
-   <input type="file" id="file" accept="audio/*,.m4a,.mp3,.wav" multiple>
-   <svg viewBox="0 0 520 300" aria-hidden="true">
-    <path class="arch" d="M70 290V150C70 70 160 20 260 10c100 10 190 60 190 140v140z" fill="var(--bg)" stroke="var(--lap)" stroke-width="2.5" stroke-dasharray="7 7"/>
-    <g fill="var(--gold)" opacity=".85"><rect x="150" y="226" width="6" height="22" rx="3"/><rect x="164" y="214" width="6" height="46" rx="3"/><rect x="178" y="222" width="6" height="30" rx="3"/><rect x="192" y="208" width="6" height="58" rx="3"/></g>
-    <g fill="var(--lap)"><rect x="214" y="218" width="6" height="38" rx="3"/><rect x="228" y="204" width="6" height="66" rx="3"/><rect x="242" y="214" width="6" height="46" rx="3"/><rect x="256" y="200" width="6" height="74" rx="3"/><rect x="270" y="212" width="6" height="50" rx="3"/><rect x="284" y="206" width="6" height="62" rx="3"/><rect x="298" y="220" width="6" height="34" rx="3"/><rect x="312" y="210" width="6" height="54" rx="3"/><rect x="326" y="222" width="6" height="30" rx="3"/><rect x="340" y="214" width="6" height="46" rx="3"/><rect x="354" y="228" width="6" height="18" rx="3"/></g>
-   </svg>
-   <span class="tx"><b>أضف تسجيل الصلاة</b><span class="mute">اسحب الملف هنا أو اضغط للاختيار</span><span class="mute" dir="ltr">m4a · mp3 · wav</span></span>
-  </label>
-  <p class="mute" id="status" role="status" style="text-align:center;margin:6px 0 0">الملفات تُعالج داخل متصفحك ولا تُرفع إلى أي مكان.</p>
+ <div class="card">
+  <div class="ch"><h2>تسجيل جديد</h2><span class="sub">الملف يُعالج داخل متصفحك ولا يُرفع إلى أي مكان</span></div>
+  <div class="cb">
+   <label class="drop" id="drop">
+    <input type="file" id="file" accept="audio/*,.m4a,.mp3,.wav" multiple>
+    <b>اسحب تسجيل الصلاة هنا</b>
+    <p>m4a أو mp3 أو wav. تقدر تختار أكثر من تسجيل مرة وحدة، وينقصون واحد ورا الثاني.</p>
+    <span class="btn pri block">اختر ملفاً</span>
+   </label>
+   <p class="status" id="status" role="status"></p>
+  </div>
  </div>
 
- <div class="card" id="work" hidden>
-  <h2>سجل القص</h2>
-  <input type="text" id="nm" aria-label="اسم التلاوة">
-  <div class="stats">
-   <div><b id="sOrig">0:00</b><span>مدة الملف</span></div>
-   <div><b id="sKeep" style="color:var(--lap)">0:00</b><span>مدة التلاوة</span></div>
-   <div><b id="sDel" style="color:var(--warn)">0:00</b><span>المحذوف</span></div>
+ <div class="card" id="work">
+  <div class="ch"><h2>سجل القص</h2><span class="st" id="wState">بانتظار التسجيل</span></div>
+  <div class="fileRow"><span>الملف</span><input type="text" id="nm" placeholder="—" aria-label="اسم التلاوة" disabled></div>
+  <div class="grid3">
+   <div class="cell"><span>المدة الأصلية</span><b id="sOrig">—</b></div>
+   <div class="cell"><span>مدة التلاوة</span><b id="sKeep" style="color:var(--accent)">—</b></div>
+   <div class="cell"><span>المحذوف</span><b id="sDel" style="color:var(--cut)">—</b></div>
   </div>
-  <div class="row"><label>عدد التسليمات في التسجيل</label>
-   <div class="step"><button class="sq" id="tMinus" aria-label="إنقاص">−</button><output id="tVal">1</output><button class="sq" id="tPlus" aria-label="زيادة">+</button></div></div>
-  <div class="row"><label>الفاتحة</label>
-   <div class="seg" id="fSeg"><button data-v="0">بدون الفاتحة</button><button data-v="1">مع الفاتحة في الركعتين</button></div></div>
-  <div class="row"><label for="ech">الصدى</label>
-   <select id="ech"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
-  <div class="fig"><canvas id="wave" aria-label="الخط الزمني للتسجيل، اضغط على مقطع لإبقائه أو حذفه"></canvas></div>
-  <div class="ends"><span>البداية</span><span>النهاية</span></div>
-  <div class="legend"><span><i style="background:var(--gold)"></i>الفاتحة</span><span><i style="background:var(--lap)"></i>السورة</span><span><i style="background:var(--line)"></i>محذوف (تكبير، ركوع، سجود، سكوت)</span></div>
-  <p class="note">التسليمة = ركعتان، في كل ركعة فاتحة وسورة. سجدة التلاوة تُحذف وتُوصل القراءة بعدها. راجع المقاطع واضغط ▶ للاستماع، وأوقف أي مقطع لا تريده.</p>
-  <ul class="regs" id="regs"></ul>
+  <div class="sec">
+   <div class="row"><span class="lbl">عدد التسليمات في التسجيل</span>
+    <div class="step"><button id="tMinus" aria-label="إنقاص">−</button><output id="tVal">1</output><button id="tPlus" aria-label="زيادة">+</button></div></div>
+   <div class="note" id="tAuto">تسليمة واحدة = ركعتان · يُكتشف العدد تلقائياً</div>
+   <div class="note">سجدة التلاوة تُكتشف تلقائياً، تُحذف السجدة وتُوصل القراءة بعدها.</div>
+  </div>
+  <div class="sec">
+   <h3>خيارات القص</h3>
+   <div class="chips" id="presets"><button data-p="def">الافتراضي</button><button data-p="nof">بدون الفاتحة</button><button data-p="both">الفاتحة في الركعتين</button></div>
+   <div class="opts" id="opts"></div>
+   <div class="row" style="margin-top:12px"><label for="ech">الصدى</label><select class="sel" id="ech"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
+  </div>
+  <details class="more" id="det"><summary>تفاصيل المقاطع وحدود القص <small id="detHint">بعد إضافة تسجيل</small></summary>
+   <div class="mbody">
+    <div class="fig"><canvas id="wave" aria-label="الخط الزمني للتسجيل، اضغط على مقطع لإبقائه أو حذفه"></canvas></div>
+    <div class="ends"><span>البداية</span><span>النهاية</span></div>
+    <div class="legend"><span><i style="background:var(--fatiha)"></i>الفاتحة</span><span><i style="background:var(--accent)"></i>السورة</span><span><i style="background:var(--faint)"></i>آمين</span><span><i style="background:var(--line)"></i>محذوف</span></div>
+    <ul class="regs" id="regs"></ul>
+   </div>
+  </details>
   <div class="acts">
-   <button id="prev">معاينة النتيجة</button>
-   <button class="pri" id="saveLib">حفظ في مكتبتي</button>
-   <button id="saveDl">حفظ وتنزيل</button>
+   <button class="btn" id="prev" disabled>معاينة</button>
+   <button class="btn pri" id="saveLib" disabled>حفظ في مكتبتي</button>
+   <button class="btn" id="saveDl" disabled>حفظ وتنزيل</button>
   </div>
-  <p class="mute" id="qInfo" style="margin:10px 0 0"></p>
  </div>
 </section>
 
 <section id="v-library" hidden>
  <div class="card">
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between"><h2>مكتبتي</h2>
-   <select id="sort" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="old">الأقدم أولاً</option><option value="name">بالاسم</option><option value="dur">بالمدة</option></select></div>
+  <div class="ch"><h2>مكتبتي</h2><button class="hb" id="mToggle">دمج تلاوات</button><select id="sort" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="old">الأقدم أولاً</option><option value="name">بالاسم</option><option value="dur">بالمدة</option></select></div>
   <audio id="player" controls hidden></audio>
   <div id="lib"></div>
  </div>
- <div class="card">
-  <h2>الدمج</h2>
-  <p class="mute" style="margin-top:0">أضف تلاوات من المكتبة أو من جهازك، رتّبها، ثم ادمجها في ملف واحد.</p>
+ <div class="card" id="mCard" hidden>
+  <div class="ch"><h2>دمج تلاوات</h2><span class="sub">أضف من مكتبتي بزر «للدمج» أو من جهازك، ورتّبها ثم ادمج</span></div>
   <div id="mlist"></div>
-  <label class="drop" style="display:inline-block"><input type="file" id="mfile" accept="audio/*,.m4a,.mp3,.wav" multiple><span style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px dashed var(--lap);border-radius:12px;color:var(--lap)">+ إضافة ملف من الجهاز</span></label>
-  <div class="row"><label>الفاصل بين التلاوات</label>
-   <div class="seg" id="gSeg"><button data-v="0">متصل</button><button data-v="1">ثانية</button><button data-v="2">ثانيتان</button><button data-v="3">٣ ثوانٍ</button></div></div>
-  <div class="acts"><button class="pri" id="merge" disabled>دمج</button></div>
+  <div class="sec">
+   <label class="btn" style="position:relative"><input type="file" id="mfile" accept="audio/*,.m4a,.mp3,.wav" multiple>+ إضافة ملف من الجهاز</label>
+   <div class="row" style="margin-top:14px"><span class="lbl">الفاصل بين التلاوات</span>
+    <div class="chips" id="gSeg" style="margin:0"><button data-v="0">متصل</button><button data-v="1">١ ث</button><button data-v="2">٢ ث</button><button data-v="3">٣ ث</button></div></div>
+  </div>
+  <div class="acts" style="grid-template-columns:1fr"><button class="btn pri" id="merge" disabled>دمج</button></div>
  </div>
 </section>
 
 <section id="v-prefs" hidden>
  <div class="card">
-  <h2>إعدادات التسجيل</h2>
-  <p class="mute" style="margin-top:0">تُحفظ على هذا الجهاز وتُطبَّق على التلاوات الجديدة، ويمكنك تغييرها لكل تلاوة من صفحة التسجيل.</p>
-  <div class="row"><label for="pT">عدد التسليمات الافتراضي</label><input type="number" id="pT" min="1" max="20"></div>
-  <div class="row"><label for="pF">الفاتحة</label><select id="pF"><option value="0">بدون الفاتحة</option><option value="1">مع الفاتحة</option></select></div>
-  <div class="row"><label for="pN">تسمية التلاوة</label><select id="pN"><option value="file">اسم الملف</option><option value="date">تاريخ التسجيل</option></select></div>
-  <div class="row"><label>المظهر</label><div class="seg" id="thSeg"><button data-v="light">نهاري</button><button data-v="dark">ليلي</button><button data-v="auto">حسب الجهاز</button></div></div>
-  <div class="row"><label for="pE">الصدى</label><select id="pE"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
-  <details><summary>إعدادات متقدمة للكشف</summary>
-   <div class="row"><label for="pG">أقل فاصل بين ركعتين (ثانية)</label><input type="number" id="pG" min="10" max="120"></div>
-   <div class="row"><label for="pB">أقل مدة لمقطع قراءة (ثانية)</label><input type="number" id="pB" min="2" max="30"></div>
-   <div class="row"><label for="pM">أطول وقفة داخل القراءة (ثانية)</label><input type="number" id="pM" min="1" max="8" step="0.5"></div>
-   <p class="mute">تُستخدم «أقل فاصل بين ركعتين» فقط إذا لم يكفِ عدد التسليمات لتحديد الركعات.</p>
-  </details>
-  <div class="acts"><button id="reset">استعادة الافتراضي</button></div>
+  <div class="ch"><h2>الإعدادات</h2></div>
+  <button class="link" data-go="guide"><span class="ic">?</span><b>دليل الاستخدام</b><span>شرح كل جزء في الموقع</span></button>
+  <div class="link nochev" style="cursor:default;flex-wrap:wrap"><span class="ic">◐</span><b>المظهر</b><span></span><div class="chips" id="thSeg" style="margin:0"><button data-v="light">نهاري</button><button data-v="dark">ليلي</button><button data-v="auto">تلقائي</button></div></div>
  </div>
  <div class="card">
-  <h2>دليل الاستخدام</h2>
-  <details open><summary>التسجيل</summary><p>أضف ملف الصلاة كاملاً. يحلل الموقع الصوت، فيحذف التكبيرات والركوع والسجود والسكوت، ويُبقي القراءة. حدّد عدد التسليمات بدقة لأنه يساعد في معرفة حدود الركعات.</p></details>
-  <details><summary>المراجعة</summary><p>كل مقطع يظهر بلونه على الخط الزمني وفي القائمة. اضغط ▶ لسماعه، واستخدم المفتاح لإبقائه أو حذفه، أو اضغط عليه مباشرة في الخط الزمني.</p></details>
-  <details><summary>الحفظ</summary><p>«حفظ في مكتبتي» يحفظ التلاوة في هذا المتصفح فقط. «حفظ وتنزيل» ينزّلها أيضاً كملف mp4 صوتي يعمل على الجوال وواتساب.</p></details>
-  <details><summary>الدمج</summary><p>من مكتبتي اختر «للدمج» على عدة تلاوات، رتّبها بالأسهم، اختر الفاصل ثم اضغط «دمج». الناتج يُحفظ في المكتبة.</p></details>
-  <details><summary>الخصوصية</summary><p>كل المعالجة تتم على جهازك ولا يُرسل أي ملف إلى خادم. مسح بيانات المتصفح يمسح المكتبة.</p></details>
+  <div class="ch"><h2>إعدادات التسجيل</h2><span class="sub">تُحفظ على هذا الجهاز</span></div>
+  <div class="cb">
+   <p class="note" style="margin:0 0 6px;font-size:14px">إعداداتك المفضّلة تُطبَّق تلقائياً على كل تلاوة جديدة، ويمكنك تعديلها لأي تلاوة من صفحة «التسجيل».</p>
+   <div id="pOpts"></div>
+   <div class="prow"><input type="checkbox" class="chk" id="pA"><label for="pA">اكتشاف عدد التسليمات تلقائياً</label></div>
+   <div class="prow"><label for="pT">عدد التسليمات الافتراضي</label><input type="number" id="pT" min="1" max="20"></div>
+   <div class="prow"><label for="pN">تسمية التلاوة</label><select class="sel" id="pN"><option value="file">اسم الملف</option><option value="date">تاريخ التسجيل</option></select></div>
+   <div class="prow"><label for="pE">الصدى</label><select class="sel" id="pE"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
+   <details style="padding-top:8px"><summary style="cursor:pointer;font-weight:600;min-height:40px">إعدادات متقدمة للكشف</summary>
+    <div class="prow"><label for="pG">أقل فاصل بين ركعتين (ثانية)</label><input type="number" id="pG" min="10" max="120"></div>
+    <div class="prow"><label for="pB">أقل مدة لمقطع قراءة (ثانية)</label><input type="number" id="pB" min="2" max="30"></div>
+    <div class="prow"><label for="pM">أطول وقفة داخل القراءة (ثانية)</label><input type="number" id="pM" min="1" max="8" step="0.5"></div>
+   </details>
+   <button class="btn block" id="reset" style="margin-top:14px">استعادة الافتراضي</button>
+  </div>
+ </div>
+</section>
+
+<section id="v-guide" hidden>
+ <div class="card">
+  <div class="ch"><h2>دليل استخدام صفوة</h2><span class="sub">جولة سريعة على الموقع</span></div>
+  <div class="cb guide">
+   <h3>١. التسجيل</h3><p>أضف تسجيل الصلاة كاملاً. يحلّل الموقع الصوت ويعرف الركعات وعدد التسليمات بنفسه، ثم يحذف التكبيرات والركوع والسجود والسكوت ويُبقي القراءة.</p>
+   <h3>٢. خيارات القص</h3><p>«الافتراضي» يُبقي الفاتحة في الركعة الأولى فقط. «بدون الفاتحة» يُبقي السور فقط. «الفاتحة في الركعتين» يُبقيها دائماً. ويمكنك ضبط كل خيار بمفرده.</p>
+   <h3>٣. سجدة التلاوة</h3><p>تُكتشف تلقائياً، فتُحذف السجدة وتُوصل القراءة بعدها مباشرة.</p>
+   <h3>٤. تحسين الصوت</h3><p>يخفف الطنين والأصوات المنخفضة ويوازن ارتفاع الصوت.</p>
+   <h3>٥. المراجعة</h3><p>افتح «تفاصيل المقاطع وحدود القص» لترى الخط الزمني بالألوان. اضغط ▶ لسماع أي مقطع، وأوقف أي مقطع لا تريده.</p>
+   <h3>٦. الحفظ</h3><p>«حفظ في مكتبتي» يحفظ التلاوة داخل متصفحك على هذا الجهاز، و«حفظ وتنزيل» ينزّلها كملف m4a يشتغل على الجوال وواتساب.</p>
+   <h3>٧. مكتبتي والدمج</h3><p>من «مكتبتي» شغّل أو نزّل أو احذف أي تلاوة. اضغط «دمج تلاوات» واختر «للدمج» على عدة تلاوات، رتّبها، اختر الفاصل، ثم «دمج».</p>
+   <h3>٨. الخصوصية</h3><p>كل المعالجة على جهازك ولا يُرسل أي ملف لأي خادم. مسح بيانات المتصفح يمسح المكتبة، فنزّل اللي يهمك.</p>
+   <button class="back" data-go="record">رجوع</button>
+  </div>
  </div>
 </section>
 </main>
-<footer dir="ltr">Designed &amp; Developed by <b>YTR Team</b> © 2026</footer>
 
-<button id="stopBtn" class="pri" hidden>■ إيقاف</button>
+<footer><div class="foot"><svg class="logo" width="40" height="40" viewBox="0 0 120 120" aria-hidden="true"><rect x="4" y="4" width="112" height="112" rx="28" fill="none" stroke="var(--brass)" stroke-width="5"/><g fill="var(--band-ink)" opacity=".4"><rect x="20" y="55" width="6" height="10" rx="3"/><rect x="30" y="49" width="6" height="22" rx="3"/><rect x="84" y="51" width="6" height="18" rx="3"/><rect x="94" y="56" width="6" height="8" rx="3"/></g><g fill="var(--brass)"><rect x="42" y="42" width="7" height="36" rx="3.5"/><rect x="53" y="27" width="7" height="66" rx="3.5"/><rect x="64" y="34" width="7" height="52" rx="3.5"/><rect x="75" y="24" width="7" height="72" rx="3.5"/></g></svg><b>صَفْوة</b><small>Designed &amp; Developed by <strong>YTR Team</strong> © 2026</small></div></footer>
+
+<button id="stopBtn" class="btn pri" hidden>■ إيقاف</button>
 <div id="busy" hidden><div><b id="bMsg">جاري المعالجة…</b><div class="bar"><i id="bBar"></i></div></div></div>
 <div id="toast" role="status"></div>
 
 <nav>
- <a href="#record"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7v6M16 7v6M4 10v2M20 10v2"/><path d="M5 20h14"/></svg>التسجيل</a>
- <a href="#library"><svg viewBox="0 0 24 24"><path d="M5 4h4v16H5zM11 4h4v16h-4zM17 6l3 .8-3.6 13.4-3-.8"/></svg>مكتبتي</a>
- <a href="#prefs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>الإعدادات</a>
+ <a href="#record"><svg viewBox="0 0 24 24"><path d="M12 3v18M8 7v10M16 7v10M4 10v4M20 10v4"/></svg>التسجيل</a>
+ <a href="#library"><svg viewBox="0 0 24 24"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16.5 5.2l3.4.9-3.8 14.3-3.4-.9"/></svg>مكتبتي</a>
+ <a href="#prefs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5l1.6 2.6 3-.6.6 3 2.6 1.6-1.4 2.9 1.4 2.9-2.6 1.6-.6 3-3-.6L12 21.5l-1.6-2.6-3 .6-.6-3-2.6-1.6 1.4-2.9-1.4-2.9 2.6-1.6.6-3 3 .6z"/></svg>الإعدادات</a>
 </nav>
 
 <script>
 {
 const $=s=>document.querySelector(s);
 const SR=24000,HOP=0.05;
-const DEF={taslims:1,withFatiha:false,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3,theme:'auto'};
+const DEF={taslims:1,autoT:true,f1:true,f2:false,amin:false,s1:true,s2:true,enhance:true,hideGap:true,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3,theme:'auto'};
+const OPTS=[['f1','الفاتحة في الركعة الأولى'],['f2','الفاتحة في الركعة الثانية'],['amin','«آمين» بعد الفاتحة'],['s1','سورة الركعة الأولى'],['s2','سورة الركعة الثانية'],['enhance','تحسين الصوت (الطنين والضجيج)'],['hideGap','إخفاء الفاصل بين الركعات']];
 const loadS=()=>{try{return Object.assign({},DEF,JSON.parse(localStorage.getItem('safwa-set')||'{}'))}catch(e){return {...DEF}}};
 let S=loadS();
 const saveS=()=>{try{localStorage.setItem('safwa-set',JSON.stringify(S))}catch(e){}};
 const fmt=t=>{t=Math.max(0,Math.round(t));const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(s).padStart(2,'0')};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const ord=['الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة'];
+const ord=['الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة','الحادية عشرة','الثانية عشرة'];
 let tt;const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2800)};
 const busy=(m,p)=>{$('#busy').hidden=m==null;if(m!=null){$('#bMsg').textContent=m;$('#bBar').style.width=Math.round((p||0)*100)+'%'}};
 
-/* ---------- التنقل ---------- */
-const views=['record','library','prefs'];
-function route(){let h=location.hash.slice(1);if(!views.includes(h))h='record';views.forEach(v=>$('#v-'+v).hidden=v!==h);document.querySelectorAll('nav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+h?'page':'false'));if(h==='library')renderLib();if(h==='record')requestAnimationFrame(draw)}
+const views=['record','library','prefs','guide'];
+function route(){let h=location.hash.slice(1);if(!views.includes(h))h='record';views.forEach(v=>$('#v-'+v).hidden=v!==h);const nv=h==='guide'?'prefs':h;document.querySelectorAll('nav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+nv?'page':'false'));if(h==='library')renderLib();if(h==='record')requestAnimationFrame(draw);scrollTo(0,0)}
 addEventListener('hashchange',route);
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)location.hash=g.dataset.go});
 
-/* ---------- الصوت ---------- */
 async function decode(blob){
  const ab=await blob.arrayBuffer();const ctx=new OfflineAudioContext(1,1,SR);
  const b=await new Promise((res,rej)=>{const p=ctx.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej)});
@@ -234,65 +312,104 @@ function analyze(c){
  const db=c.db,lo=pct(db,.1),hi=pct(db,.95),th=lo+Math.max(6,(hi-lo)*.35);c.lo=lo;c.hi=hi;
  const ph=[];let st=-1;
  for(let f=0;f<=db.length;f++){const v=f<db.length&&db[f]>th;if(v&&st<0)st=f;if(!v&&st>=0){ph.push([st*HOP,f*HOP]);st=-1}}
- const P=[];for(const p of ph){const l=P[P.length-1];if(l&&p[0]-l[1]<0.8)l[1]=p[1];else P.push(p.slice())}
- c.phrases=P.filter(p=>p[1]-p[0]>=0.25);group(c)}
+ const P=[];for(const p of ph){const l=P[P.length-1];if(l&&p[0]-l[1]<0.45)l[1]=p[1];else P.push(p.slice())}
+ c.phrases=P.filter(p=>p[1]-p[0]>=0.5);group(c)}
 
 function group(c){
  const B=[];for(const p of c.phrases){const l=B[B.length-1];if(l&&p[0]-l.e<=S.mergeGap){l.e=p[1];l.p.push(p)}else B.push({s:p[0],e:p[1],p:[p]})}
+ const short=p=>p[1]-p[0]<2.5;
+ B.forEach(b=>{const p=b.p;
+  if(p.length>1&&short(p[0])&&p[1][0]-p[0][1]>=0.6)p.shift();
+  if(p.length>1&&short(p[p.length-1])&&p[p.length-1][0]-p[p.length-2][1]>=0.6)p.pop();
+  b.s=p[0][0];b.e=p[p.length-1][1]});
  const K=B.filter(b=>b.e-b.s>=S.minBlock);
- const gaps=K.slice(1).map((b,i)=>({i:i+1,g:b.s-K[i].e})),R=2*c.taslims;
+ const gaps=K.slice(1).map((b,i)=>({i:i+1,g:b.s-K[i].e})),R=c.auto?0:2*c.taslims;
  const cuts=R>1&&gaps.length>=R-1?new Set(gaps.slice().sort((a,b)=>b.g-a.g).slice(0,R-1).map(x=>x.i)):new Set(gaps.filter(x=>x.g>=S.rakGap).map(x=>x.i));
  const raks=[];let r=null;K.forEach((b,i)=>{if(i===0||cuts.has(i)){r={blocks:[]};raks.push(r)}r.blocks.push(b)});
  const regs=[];
  raks.forEach((r,ri)=>{
-  const s0=r.blocks[0].s,ps=r.blocks.flatMap(b=>b.p);let best=null;
-  for(let j=1;j<ps.length;j++){const g=ps[j][0]-ps[j-1][1],t=ps[j-1][1]-s0;if(t>=20&&t<=110&&(!best||g>best.g))best={g,a:ps[j-1][1],b:ps[j][0]}}
-  const split=best&&best.g>=1;if(split)regs.push({s:s0,e:best.a,k:'f',r:ri});
+  const s0=r.blocks[0].s,ps=r.blocks.flatMap(b=>b.p),ends=new Set(r.blocks.map(b=>b.e));let best=null;
+  for(let j=1;j<ps.length;j++){const g=ps[j][0]-ps[j-1][1],t=ps[j-1][1]-s0,sc=g+(ends.has(ps[j-1][1])?1.5:0)-(t>80?0.5:0);if(t>=20&&t<=110&&(!best||sc>best.sc))best={g,sc,a:ps[j-1][1],b:ps[j][0]}}
+  const split=best&&best.g>=1;
+  if(split){const fp=ps.filter(p=>p[1]<=best.a+.01),la=fp[fp.length-1];
+   if(fp.length>2&&la[1]-la[0]<2.6){regs.push({s:s0,e:fp[fp.length-2][1],k:'f',r:ri});regs.push({s:la[0],e:la[1],k:'a',r:ri})}
+   else regs.push({s:s0,e:best.a,k:'f',r:ri})}
   const from=split?best.b:s0;
   r.blocks.forEach(b=>{const s=Math.max(b.s,from);if(b.e-s>=2)regs.push({s,e:b.e,k:'s',r:ri})});
  });
- regs.forEach(x=>x.on=x.k==='f'?c.withFatiha:true);c.regs=regs}
+ c.regs=regs;applyOpts(c);if(c.auto)c.taslims=Math.max(1,Math.round(raks.length/2))}
 
-function build(x,regs){
+function applyOpts(c){const o=c.o;c.regs.forEach(x=>{const second=x.r%2===1;x.on=x.k==='s'?(second?o.s2:o.s1):(second?o.f2:o.f1)&&(x.k==='f'||o.amin)})}
+
+function build(x,regs,hideGap){
  const on=regs.filter(r=>r.on).sort((a,b)=>a.s-b.s),F=Math.round(SR*.02),parts=[];let len=0;
- on.forEach((r,i)=>{const a=Math.max(0,Math.round((r.s-.15)*SR)),b=Math.min(x.length,Math.round((r.e+.25)*SR)),g=i?Math.round(SR*(on[i-1].r===r.r?.35:1)):0;parts.push([a,b,g]);len+=g+b-a});
+ on.forEach((r,i)=>{const a=Math.max(0,Math.round((r.s-.15)*SR)),b=Math.min(x.length,Math.round((r.e+.25)*SR)),g=i?Math.round(SR*(on[i-1].r===r.r||hideGap?.35:1.2)):0;parts.push([a,b,g]);len+=g+b-a});
  const out=new Float32Array(Math.max(len,1));let o=0;
  for(const [a,b,g] of parts){o+=g;const n=b-a;out.set(x.subarray(a,b),o);for(let i=0;i<F&&i<n/2;i++){const w=i/F;out[o+i]*=w;out[o+n-1-i]*=w}o+=n}
  return out}
 
 const ECHO={light:[1.2,.16],mid:[2,.26],strong:[3,.36]};
-async function addEcho(x,lvl){
- const e=ECHO[lvl];if(!e)return x;const [d,w]=e,tail=Math.round(d*SR);
+async function processAudio(x,enh,lvl){
+ const e=ECHO[lvl],tail=e?Math.round(e[0]*SR):0;
  const ctx=new OfflineAudioContext(1,x.length+tail,SR),b=ctx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);
- const ir=ctx.createBuffer(1,tail,SR),ch=ir.getChannelData(0);for(let i=0;i<tail;i++)ch[i]=(Math.random()*2-1)*Math.pow(1-i/tail,3.5);
- const src=ctx.createBufferSource();src.buffer=b;const cv=ctx.createConvolver();cv.buffer=ir;const wet=ctx.createGain();wet.gain.value=w;
- src.connect(ctx.destination);src.connect(cv);cv.connect(wet);wet.connect(ctx.destination);src.start();
- const y=(await ctx.startRendering()).getChannelData(0);let p=0;for(let i=0;i<y.length;i++){const a=Math.abs(y[i]);if(a>p)p=a}
- if(p>.99){const k=.98/p;for(let i=0;i<y.length;i++)y[i]*=k}return y}
+ const src=ctx.createBufferSource();src.buffer=b;let node=src;
+ if(enh){const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=90;hp.Q.value=.7;
+  const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=10000;
+  const pk=ctx.createBiquadFilter();pk.type='peaking';pk.frequency.value=3000;pk.Q.value=.9;pk.gain.value=2;
+  const cp=ctx.createDynamicsCompressor();cp.threshold.value=-26;cp.knee.value=10;cp.ratio.value=3;cp.attack.value=.01;cp.release.value=.25;
+  node.connect(hp);hp.connect(lp);lp.connect(pk);pk.connect(cp);node=cp}
+ node.connect(ctx.destination);
+ if(e){const ir=ctx.createBuffer(1,tail,SR),ch=ir.getChannelData(0);for(let i=0;i<tail;i++)ch[i]=(Math.random()*2-1)*Math.pow(1-i/tail,3.5);
+  const cv=ctx.createConvolver();cv.buffer=ir;const wet=ctx.createGain();wet.gain.value=e[1];node.connect(cv);cv.connect(wet);wet.connect(ctx.destination)}
+ src.start();const y=(await ctx.startRendering()).getChannelData(0);let p=0;for(let i=0;i<y.length;i++){const a=Math.abs(y[i]);if(a>p)p=a}
+ if(p>0){const k=(enh?.89:Math.min(1,.98/p)*p)/p;if(Math.abs(k-1)>.001)for(let i=0;i<y.length;i++)y[i]*=k}return y}
 
 async function resample(x,sr){const ctx=new OfflineAudioContext(1,Math.ceil(x.length*sr/SR),sr),b=ctx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);const s=ctx.createBufferSource();s.buffer=b;s.connect(ctx.destination);s.start();return (await ctx.startRendering()).getChannelData(0)}
 
-let muxP=null;
-const loadMux=()=>muxP||(muxP=new Promise((res,rej)=>{if(window.Mp4Muxer)return res(window.Mp4Muxer);const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/mp4-muxer@5.1.3/build/mp4-muxer.min.js';s.onload=()=>window.Mp4Muxer?res(window.Mp4Muxer):rej(new Error('mux'));s.onerror=rej;document.head.appendChild(s)}).catch(e=>{muxP=null;throw e}));
 
 async function encode(x,prog){
  try{
   if(!window.AudioEncoder)throw 0;
   const cfg=sr=>({codec:'mp4a.40.2',sampleRate:sr,numberOfChannels:1,bitrate:sr===SR?64000:96000});
-  let sr=SR,data=x,sup=await AudioEncoder.isConfigSupported(cfg(SR)).catch(()=>({}));
-  if(!sup.supported){sr=48000;sup=await AudioEncoder.isConfigSupported(cfg(sr)).catch(()=>({}));if(!sup.supported)throw 0;data=await resample(x,sr)}
-  const M=await loadMux(),target=new M.ArrayBufferTarget();
-  const mux=new M.Muxer({target,audio:{codec:'aac',numberOfChannels:1,sampleRate:sr},fastStart:'in-memory',firstTimestampBehavior:'offset'});
-  let err=null;const enc=new AudioEncoder({output:(c,m)=>mux.addAudioChunk(c,m),error:e=>err=e});enc.configure(cfg(sr));
+  let sr=0;for(const r of [SR,48000,44100]){const q=await AudioEncoder.isConfigSupported(cfg(r)).catch(()=>({}));if(q.supported){sr=r;break}}
+  if(!sr)throw 0;const data=sr===SR?x:await resample(x,sr);
+  const frames=[];let asc=null,err=null;
+  const enc=new AudioEncoder({output:(c,m)=>{const b=new Uint8Array(c.byteLength);c.copyTo(b);frames.push(b);const d=m&&m.decoderConfig&&m.decoderConfig.description;if(d&&!asc)asc=new Uint8Array(d.buffer?d.buffer.slice(d.byteOffset,d.byteOffset+d.byteLength):d)},error:e=>err=e});
+  enc.configure(cfg(sr));
   const N=8192;
   for(let i=0,k=0;i<data.length;i+=N,k++){
    if(err)throw err;const ch=data.slice(i,i+N);
    const ad=new AudioData({format:'f32-planar',sampleRate:sr,numberOfFrames:ch.length,numberOfChannels:1,timestamp:Math.round(i/sr*1e6),data:ch});enc.encode(ad);ad.close();
    while(enc.encodeQueueSize>40)await sleep(4);
    if(k%40===0){prog&&prog(i/data.length);await sleep(0)}}
-  await enc.flush();enc.close();if(err)throw err;mux.finalize();
-  return {blob:new Blob([target.buffer],{type:'audio/mp4'}),ext:'mp4'};
+  await enc.flush();enc.close();if(err||!frames.length)throw err||0;
+  if(!asc){const idx=[96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000].indexOf(sr);asc=Uint8Array.from([16|(idx>>1),((idx&1)<<7)|8])}
+  return {blob:muxM4A(sr,1,frames,asc),ext:'mp4'};
  }catch(e){return {blob:wav(x,SR),ext:'wav'}}}
+
+function muxM4A(sr,ch,frames,asc){
+ const u8=(...a)=>Uint8Array.from(a),u16=v=>u8(v>>8&255,v&255),u32=v=>u8(v>>>24&255,v>>>16&255,v>>>8&255,v&255),str=s=>u8(...[...s].map(c=>c.charCodeAt(0)));
+ const cat=a=>{let n=0;for(const x of a)n+=x.length;const o=new Uint8Array(n);let i=0;for(const x of a){o.set(x,i);i+=x.length}return o};
+ const box=(t,...p)=>{const b=cat(p);return cat([u32(b.length+8),str(t),b])},full=(t,v,f,...p)=>box(t,u8(v,f>>16&255,f>>8&255,f&255),...p);
+ const n=frames.length,dur=n*1024,ms=Math.round(dur/sr*1000),z=k=>new Uint8Array(k);
+ const desc=(tag,b)=>cat([u8(tag,b.length),b]);
+ const esds=full('esds',0,0,desc(3,cat([u16(1),u8(0),desc(4,cat([u8(0x40,0x15,0,0,0),u32(0),u32(0),desc(5,asc)])),desc(6,u8(2))])));
+ const mp4a=box('mp4a',z(6),u16(1),z(8),u16(ch),u16(16),z(4),u32(sr*65536>>>0),esds);
+ const sizes=cat(frames.map(f=>u32(f.length)));
+ const unity=cat([u32(0x10000),z(12),u32(0x10000),z(12),u32(0x40000000)]);
+ const mk=off=>box('moov',
+  full('mvhd',0,0,z(8),u32(1000),u32(ms),u32(0x10000),u16(0x100),z(10),unity,z(24),u32(2)),
+  box('trak',
+   full('tkhd',0,3,z(8),u32(1),z(4),u32(ms),z(8),u16(0),u16(0),u16(0x100),z(2),unity,u32(0),u32(0)),
+   box('mdia',
+    full('mdhd',0,0,z(8),u32(sr),u32(dur),u16(0x55c4),z(2)),
+    full('hdlr',0,0,z(4),str('soun'),z(12),str('Sound'),z(1)),
+    box('minf',full('smhd',0,0,z(4)),box('dinf',full('dref',0,0,u32(1),full('url ',0,1))),
+     box('stbl',full('stsd',0,0,u32(1),mp4a),full('stts',0,0,u32(1),u32(n),u32(1024)),
+      full('stsc',0,0,u32(1),u32(1),u32(n),u32(1)),full('stsz',0,0,u32(0),u32(n),sizes),full('stco',0,0,u32(1),u32(off)))))));
+ const ftyp=box('ftyp',str('M4A '),u32(0),str('M4A '),str('mp42'),str('isom'));
+ const off=ftyp.length+mk(0).length+8;let mlen=8;for(const f of frames)mlen+=f.length;
+ return new Blob([ftyp,mk(off),u32(mlen),str('mdat'),...frames],{type:'audio/mp4'})}
 
 function wav(x,sr){const n=x.length,b=new ArrayBuffer(44+n*2),v=new DataView(b),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
  w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
@@ -321,7 +438,7 @@ function stop(){if(playing){try{playing.stop()}catch(e){}playing=null}$('#stopBt
 function play(x){stop();try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();actx.resume&&actx.resume();const b=actx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);const s=actx.createBufferSource();s.buffer=b;s.connect(actx.destination);s.start();playing=s;$('#stopBtn').hidden=false;s.onended=()=>{if(playing===s)stop()}}catch(e){toast('تعذّر التشغيل')}}
 $('#stopBtn').onclick=stop;
 
-/* ---------- المكتبة (IndexedDB) ---------- */
+/* ---------- المكتبة ---------- */
 let memLib=[],dbP=null;
 const idb=()=>dbP||(dbP=new Promise((res,rej)=>{try{const r=indexedDB.open('safwa',1);r.onupgradeneeded=()=>r.result.createObjectStore('items',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}));
 async function tx(mode,fn){const db=await idb();return new Promise((res,rej)=>{const t=db.transaction('items',mode),r=fn(t.objectStore('items'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})}
@@ -334,34 +451,40 @@ let queue=[],cur=null;
 const baseName=f=>f.name.replace(/\.[^.]+$/,'');
 const dateName=d=>'تلاوة '+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function addFiles(fs){const a=[...fs].filter(f=>/^audio\//.test(f.type)||/\.(m4a|mp3|wav|aac|ogg|opus)$/i.test(f.name));if(!a.length){toast('اختر ملفاً صوتياً');return}queue.push(...a);if(!cur)next();else qInfo()}
-function qInfo(){$('#qInfo').textContent=queue.length?'في الانتظار: '+queue.length+' ملف — سيُفتح التالي بعد الحفظ':''}
+function qInfo(){$('#status').textContent=queue.length?'في الانتظار: '+queue.length+' ملف، يُفتح التالي بعد الحفظ':''}
 async function next(){
- const f=queue.shift();qInfo();if(!f){cur=null;$('#work').hidden=true;return}
+ const f=queue.shift();qInfo();if(!f){cur=null;resetWork();return}
  busy('جاري قراءة «'+f.name+'»…',.2);await sleep(30);
  try{const x=await decode(f);busy('جاري تحليل الصوت…',.7);await sleep(30);
   const d=new Date(f.lastModified||Date.now());
-  cur={name:S.naming==='date'?dateName(d):baseName(f),x,dur:x.length/SR,db:frames(x),taslims:S.taslims,withFatiha:S.withFatiha,echo:S.echo};
+  cur={name:S.naming==='date'?dateName(d):baseName(f),x,dur:x.length/SR,db:frames(x),taslims:S.taslims,auto:S.autoT,o:Object.fromEntries(OPTS.map(([k])=>[k,S[k]])),echo:S.echo};
   analyze(cur);busy();showCur()}
  catch(e){busy();$('#status').textContent='تعذّر فتح «'+f.name+'». جرّب ملف mp3 أو m4a آخر.';cur=null;next()}}
-function showCur(){$('#work').hidden=false;$('#nm').value=cur.name;$('#ech').value=cur.echo;refresh();$('#work').scrollIntoView({behavior:'smooth',block:'start'})}
+function resetWork(){$('#nm').value='';$('#nm').disabled=true;['#sOrig','#sKeep','#sDel'].forEach(s=>$(s).textContent='—');$('#wState').textContent='بانتظار التسجيل';$('#detHint').textContent='بعد إضافة تسجيل';$('#regs').innerHTML='';['#prev','#saveLib','#saveDl'].forEach(s=>$(s).disabled=true);renderOpts();const c=$('#wave');c.getContext('2d').clearRect(0,0,c.width,c.height)}
+function showCur(){$('#nm').disabled=false;$('#nm').value=cur.name;$('#ech').value=cur.echo;$('#wState').textContent='جاهز';refresh();$('#work').scrollIntoView({behavior:'smooth',block:'start'})}
+function renderOpts(){const o=cur?cur.o:S;
+ $('#opts').innerHTML=OPTS.map(([k,l])=>`<label class="opt"><input type="checkbox" data-o="${k}" ${o[k]?'checked':''}>${l}</label>`).join('');
+ const p=o.f1&&!o.f2?'def':!o.f1&&!o.f2?'nof':o.f1&&o.f2?'both':'';
+ $('#presets').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.p===p)))}
 function refresh(){
- if(!cur)return;$('#tVal').textContent=cur.taslims;
- $('#fSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.v==='1')===cur.withFatiha)));
+ if(!cur)return;renderOpts();$('#tVal').textContent=cur.taslims;$('#tAuto').textContent=(cur.taslims===1?'تسليمة واحدة = ركعتان':cur.taslims+' تسليمات = '+cur.taslims*2+' ركعات')+(cur.auto?' · اكتُشف تلقائياً':'');
  const keep=cur.regs.filter(r=>r.on).reduce((a,r)=>a+r.e-r.s,0);
  $('#sOrig').textContent=fmt(cur.dur);$('#sKeep').textContent=fmt(keep);$('#sDel').textContent=fmt(cur.dur-keep);
- $('#regs').innerHTML=cur.regs.length?cur.regs.map((r,i)=>`<li class="${r.on?'':'off'}"><span class="k" style="background:var(${r.k==='f'?'--gold':'--lap'})"></span><button class="sq" data-play="${i}" aria-label="استماع">▶</button><span class="m">الركعة ${ord[r.r]||r.r+1} · ${r.k==='f'?'الفاتحة':'السورة'}<small>${fmt(r.s)} – ${fmt(r.e)} · ${fmt(r.e-r.s)}</small></span><input type="checkbox" class="sw" data-on="${i}" ${r.on?'checked':''} aria-label="إبقاء المقطع"></li>`).join(''):'<li class="mute">لم يُعثر على قراءة واضحة. جرّب تقليل «أقل مدة لمقطع قراءة» من الإعدادات المتقدمة.</li>';
- $('#saveLib').disabled=$('#saveDl').disabled=$('#prev').disabled=!keep;draw()}
+ $('#detHint').textContent=cur.regs.length+' مقاطع';
+ const kn={f:'الفاتحة',a:'آمين',s:'السورة'},kc={f:'--fatiha',a:'--faint',s:'--accent'};
+ $('#regs').innerHTML=cur.regs.length?cur.regs.map((r,i)=>`<li class="${r.on?'':'off'}"><span class="k" style="background:var(${kc[r.k]})"></span><button class="play" data-play="${i}" aria-label="استماع">▶</button><span class="m">الركعة ${ord[r.r]||r.r+1} · ${kn[r.k]}<small>من <bdi>${fmt(r.s)}</bdi> إلى <bdi>${fmt(r.e)}</bdi> · المدة <bdi>${fmt(r.e-r.s)}</bdi></small></span><input type="checkbox" class="chk" data-on="${i}" ${r.on?'checked':''} aria-label="إبقاء المقطع"></li>`).join(''):'<li>لم يُعثر على قراءة واضحة. جرّب تقليل «أقل مدة لمقطع قراءة» من الإعدادات المتقدمة.</li>';
+ ['#prev','#saveLib','#saveDl'].forEach(s=>$(s).disabled=!keep);draw()}
 function draw(){
- const cv=$('#wave');if(!cur||$('#work').hidden)return;const W=cv.clientWidth,H=cv.clientHeight;if(!W)return;
+ const cv=$('#wave');if(!cur)return;const W=cv.clientWidth,H=cv.clientHeight;if(!W)return;
  const dpr=devicePixelRatio||1;cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
- const cs=getComputedStyle(document.body),col=n=>cs.getPropertyValue(n).trim(),D=cur.dur,X=t=>W-t/D*W;
- cur.regs.forEach(r=>{g.fillStyle=col(r.k==='f'?'--goldS':'--lapS');if(r.on)g.fillRect(X(r.e),0,X(r.s)-X(r.e),H)});
+ const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim(),D=cur.dur,X=t=>W-t/D*W,kc={f:'--fatiha',a:'--faint',s:'--accent'};
+ cur.regs.forEach(r=>{if(r.on){g.fillStyle=col(r.k==='f'?'--fatiha-soft':'--accent-soft');g.fillRect(X(r.e),0,X(r.s)-X(r.e),H)}});
  const db=cur.db,n=db.length,lo=cur.lo,rg=Math.max(10,cur.hi-lo+6);
  for(let px=0;px<W;px++){const t0=(W-px-1)/W*D,t1=(W-px)/W*D;let m=-200;for(let f=Math.floor(t0/HOP);f<Math.min(n,Math.ceil(t1/HOP));f++)if(db[f]>m)m=db[f];
-  const h=Math.max(1,Math.min(1,(m-lo)/rg)*(H-16));const t=(t0+t1)/2,r=cur.regs.find(q=>t>=q.s&&t<=q.e);
-  g.fillStyle=r&&r.on?col(r.k==='f'?'--gold':'--lap'):col('--line');g.fillRect(px,(H-h)/2,1,h)}
- cur.regs.forEach(r=>{g.fillStyle=r.on?col(r.k==='f'?'--gold':'--lap'):col('--mute');g.fillRect(X(r.e),H-5,Math.max(2,X(r.s)-X(r.e)),5)})}
+  const h=Math.max(1,Math.min(1,(m-lo)/rg)*(H-14));const t=(t0+t1)/2,r=cur.regs.find(q=>t>=q.s&&t<=q.e);
+  g.fillStyle=r&&r.on?col(kc[r.k]):col('--line2');g.fillRect(px,(H-h)/2,1,h)}}
 const ro=new ResizeObserver(()=>draw());ro.observe($('#wave'));
+$('#det').addEventListener('toggle',()=>requestAnimationFrame(draw));
 
 $('#file').onchange=e=>{addFiles(e.target.files);e.target.value=''};
 const dz=$('#drop');
@@ -370,13 +493,15 @@ dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
 dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');addFiles(e.dataTransfer.files)});
 $('#nm').oninput=e=>{if(cur)cur.name=e.target.value};
 $('#ech').onchange=e=>{if(cur)cur.echo=e.target.value};
-const setT=v=>{if(!cur)return;cur.taslims=Math.max(1,Math.min(20,v));group(cur);refresh()};
+const setT=v=>{if(!cur)return;cur.auto=false;cur.taslims=Math.max(1,Math.min(20,v));group(cur);refresh()};
 $('#tMinus').onclick=()=>setT(cur.taslims-1);$('#tPlus').onclick=()=>setT(cur.taslims+1);
-$('#fSeg').onclick=e=>{const b=e.target.closest('button');if(!b||!cur)return;cur.withFatiha=b.dataset.v==='1';cur.regs.forEach(r=>{if(r.k==='f')r.on=cur.withFatiha});refresh()};
+const PRE={def:{f1:true,f2:false},nof:{f1:false,f2:false},both:{f1:true,f2:true}};
+$('#presets').onclick=e=>{const b=e.target.closest('button');if(!b)return;const o=cur?cur.o:null;if(!o){Object.assign(S,PRE[b.dataset.p]);saveS();renderOpts();return}Object.assign(o,PRE[b.dataset.p]);applyOpts(cur);refresh()};
+$('#opts').onchange=e=>{const c=e.target.closest('[data-o]');if(!c)return;if(!cur){S[c.dataset.o]=c.checked;saveS();renderOpts();return}cur.o[c.dataset.o]=c.checked;applyOpts(cur);refresh()};
 $('#regs').onclick=e=>{const p=e.target.closest('[data-play]');if(p){const r=cur.regs[+p.dataset.play];play(cur.x.subarray(Math.max(0,Math.round((r.s-.15)*SR)),Math.round((r.e+.25)*SR)))}};
 $('#regs').onchange=e=>{const s=e.target.closest('[data-on]');if(s){cur.regs[+s.dataset.on].on=s.checked;refresh()}};
 $('#wave').onclick=e=>{if(!cur)return;const b=e.currentTarget.getBoundingClientRect(),t=(b.right-e.clientX)/b.width*cur.dur,r=cur.regs.find(q=>t>=q.s-.5&&t<=q.e+.5);if(r){r.on=!r.on;refresh()}};
-async function render(){busy('جاري تجهيز التلاوة…',.1);await sleep(30);let y=build(cur.x,cur.regs);if(cur.echo!=='off'){busy('جاري إضافة الصدى…',.3);y=await addEcho(y,cur.echo)}return y}
+async function render(){busy('جاري تجهيز التلاوة…',.1);await sleep(30);let y=build(cur.x,cur.regs,cur.o.hideGap);if(cur.o.enhance||cur.echo!=='off'){busy('جاري تحسين الصوت…',.3);y=await processAudio(y,cur.o.enhance,cur.echo)}return y}
 $('#prev').onclick=async()=>{try{const y=await render();busy();play(y)}catch(e){busy();toast('تعذّرت المعاينة')}};
 async function saveCur(andDl){
  try{const y=await render();const {blob,ext}=await encode(y,p=>busy('جاري ترميز الملف…',.4+p*.55));
@@ -390,16 +515,17 @@ let libCache=[],mlist=[],gap=0,urls=[];
 async function renderLib(){
  libCache=await getAll();const s=$('#sort').value;
  libCache.sort((a,b)=>s==='old'?a.created-b.created:s==='name'?a.name.localeCompare(b.name,'ar'):s==='dur'?b.dur-a.dur:b.created-a.created);
- $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="mute" style="grid-column:1/-1">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button data-a="del" data-id="${esc(it.id)}" style="color:var(--warn)">حذف</button></div></div>`).join(''):'<p class="empty">لا توجد تلاوات بعد. احفظ أول تلاوة من صفحة التسجيل.</p>'}
+ $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="dt">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button class="del" data-a="del" data-id="${esc(it.id)}">حذف</button></div></div>`).join(''):'<div class="empty"><b>لا توجد تلاوات محفوظة بعد</b><p>بعد القص اضغط «حفظ في مكتبتي» لتظهر هنا مرتبة بالاسم والتاريخ والمدة.</p></div>'}
 $('#sort').onchange=renderLib;
+$('#mToggle').onclick=()=>{$('#mCard').hidden=!$('#mCard').hidden;if(!$('#mCard').hidden)$('#mCard').scrollIntoView({behavior:'smooth'})};
 $('#lib').onclick=async e=>{
  const b=e.target.closest('button');if(!b)return;const it=libCache.find(x=>x.id===b.dataset.id);if(!it)return;
  if(b.dataset.a==='play'){stop();const p=$('#player');urls.forEach(u=>URL.revokeObjectURL(u));urls=[URL.createObjectURL(it.blob)];p.src=urls[0];p.hidden=false;p.play().catch(()=>{})}
  if(b.dataset.a==='dl')download(it.name,it.blob,it.ext);
- if(b.dataset.a==='mg'){mlist.push({name:it.name,blob:it.blob,dur:it.dur});renderM();toast('أُضيفت إلى الدمج')}
+ if(b.dataset.a==='mg'){mlist.push({name:it.name,blob:it.blob,dur:it.dur});$('#mCard').hidden=false;renderM();toast('أُضيفت إلى الدمج')}
  if(b.dataset.a==='del'){if(b.dataset.c){await delItem(it.id);renderLib()}else{b.dataset.c=1;b.textContent='تأكيد الحذف'}}};
 function renderM(){
- $('#mlist').innerHTML=mlist.length?mlist.map((m,i)=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto auto auto auto;align-items:center"><span class="n">${i+1}. ${esc(m.name)}</span><span class="d">${m.dur?fmt(m.dur):''}</span><button class="sq" data-m="up" data-i="${i}" aria-label="أعلى" ${i?'':'disabled'}>▲</button><button class="sq" data-m="dn" data-i="${i}" aria-label="أسفل" ${i<mlist.length-1?'':'disabled'}>▼</button><button class="sq" data-m="rm" data-i="${i}" aria-label="إزالة">×</button></div>`).join(''):'<p class="empty" style="padding:10px">لم تُضف تلاوات للدمج.</p>';
+ $('#mlist').innerHTML=mlist.length?mlist.map((m,i)=>`<div class="mrow"><span class="n">${i+1}. ${esc(m.name)}</span><span class="d">${m.dur?fmt(m.dur):''}</span><button data-m="up" data-i="${i}" aria-label="أعلى" ${i?'':'disabled'}>▲</button><button data-m="dn" data-i="${i}" aria-label="أسفل" ${i<mlist.length-1?'':'disabled'}>▼</button><button data-m="rm" data-i="${i}" aria-label="إزالة">×</button></div>`).join(''):'<div class="empty"><b>لم تُضف تلاوات للدمج</b><p>اضغط «للدمج» على تلاوتين أو أكثر من مكتبتي.</p></div>';
  $('#merge').disabled=mlist.length<2;$('#gSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.v===gap)))}
 $('#mlist').onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
  if(b.dataset.m==='up')[mlist[i-1],mlist[i]]=[mlist[i],mlist[i-1]];if(b.dataset.m==='dn')[mlist[i+1],mlist[i]]=[mlist[i],mlist[i+1]];if(b.dataset.m==='rm')mlist.splice(i,1);renderM()};
@@ -415,22 +541,26 @@ $('#merge').onclick=async()=>{
  catch(e){busy();toast('تعذّر الدمج')}};
 
 /* ---------- الإعدادات ---------- */
-const P={pT:'taslims',pF:'withFatiha',pN:'naming',pE:'echo',pG:'rakGap',pB:'minBlock',pM:'mergeGap'};
-function fillP(){for(const [id,k] of Object.entries(P)){const el=$('#'+id);el.value=k==='withFatiha'?(S[k]?'1':'0'):S[k]}}
-for(const [id,k] of Object.entries(P))$('#'+id).onchange=e=>{let v=e.target.value;if(k==='withFatiha')v=v==='1';else if(typeof DEF[k]==='number'){v=+v;if(!isFinite(v)||v<=0){v=DEF[k];e.target.value=v}}S[k]=v;saveS();if(cur&&['rakGap','minBlock','mergeGap'].includes(k)){group(cur);refresh()}};
-$('#reset').onclick=()=>{S={...DEF};saveS();fillP();toast('استُعيدت الإعدادات الافتراضية')};
+function fillP(){
+ $('#pOpts').innerHTML=OPTS.map(([k,l])=>`<div class="prow"><input type="checkbox" class="chk" id="po-${k}" data-po="${k}" ${S[k]?'checked':''}><label for="po-${k}">${l}</label></div>`).join('');
+ $('#pA').checked=S.autoT;$('#pT').value=S.taslims;$('#pN').value=S.naming;$('#pE').value=S.echo;$('#pG').value=S.rakGap;$('#pB').value=S.minBlock;$('#pM').value=S.mergeGap}
+$('#pOpts').onchange=e=>{const c=e.target.closest('[data-po]');if(c){S[c.dataset.po]=c.checked;saveS();if(!cur)renderOpts()}};
+$('#pA').onchange=e=>{S.autoT=e.target.checked;saveS()};
+$('#pN').onchange=e=>{S.naming=e.target.value;saveS()};$('#pE').onchange=e=>{S.echo=e.target.value;saveS()};
+const num=(id,k)=>$(id).onchange=e=>{let v=+e.target.value;if(!isFinite(v)||v<=0){v=DEF[k];e.target.value=v}S[k]=v;saveS();if(cur&&k!=='taslims'){group(cur);refresh()}};
+num('#pT','taslims');num('#pG','rakGap');num('#pB','minBlock');num('#pM','mergeGap');
 
 const mq=matchMedia('(prefers-color-scheme: dark)');
 function applyTheme(){const t=S.theme,root=document.documentElement;if(t==='light'||t==='dark')root.dataset.theme=t;else delete root.dataset.theme;
- const dark=t==='dark'||(t!=='light'&&(root.dataset.theme==='dark'||(!root.dataset.theme&&mq.matches)));document.body.classList.toggle('isdark',dark);
- const m=document.querySelector('meta[name=theme-color]');if(m)m.content=dark?'#0a1813':'#0e5a44';
+ const dark=t==='dark'||(t!=='light'&&mq.matches);document.body.classList.toggle('isdark',dark);
+ const m=document.querySelector('meta[name=theme-color]');if(m)m.content=dark?'#121b17':'#0e4a3d';
  $('#thSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===t)));requestAnimationFrame(draw)}
 const setTheme=t=>{S.theme=t;saveS();applyTheme()};
 $('#themeBtn').onclick=()=>setTheme(document.body.classList.contains('isdark')?'light':'dark');
 $('#thSeg').onclick=e=>{const b=e.target.closest('button');if(b)setTheme(b.dataset.v)};
 mq.addEventListener&&mq.addEventListener('change',applyTheme);
-const _reset=$('#reset').onclick;$('#reset').onclick=()=>{_reset();applyTheme()};
-applyTheme();fillP();renderM();route();dl();
+$('#reset').onclick=()=>{const th=S.theme;S={...DEF,theme:th};saveS();fillP();if(!cur)renderOpts();toast('استُعيدت الإعدادات الافتراضية')};
+applyTheme();fillP();resetWork();renderM();route();dl();
 }
 </script>
 </body>
