@@ -448,7 +448,7 @@ const mimeOf=ext=>ext==='mp4'?'audio/mp4':'audio/wav';
 const fileOf=it=>new File([it.blob],clean(it.name)+'.'+(it.ext==='mp4'?'m4a':it.ext),{type:mimeOf(it.ext)});
 const canShare=()=>{try{return !!(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['x'],'a.m4a',{type:'audio/mp4'})]}))}catch(e){return false}};
 async function shareItem(it){const f=fileOf(it);
- try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:it.name});return}}
+ try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}
  catch(e){if(e&&e.name==='AbortError')return}
  download(it.name,it.blob,it.ext)}
 
