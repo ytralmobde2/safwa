@@ -134,6 +134,8 @@ nav a[aria-current=page]{color:var(--brass)}
 nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inline:22%;height:3px;background:var(--band-ink)}
 #busy{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:9;padding:20px}
 #busy[hidden]{display:none}
+#done{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:9;padding:20px}
+#done>div{background:var(--bg);border-top:3px solid var(--brass);padding:22px;width:min(380px,100%);text-align:center}#done b{font-size:19px}#done p{color:var(--muted);margin:6px 0 14px;overflow-wrap:anywhere}.dacts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 #busy div{background:var(--bg);border-top:3px solid var(--brass);padding:22px;width:min(360px,100%);text-align:center}
 .bar{height:6px;background:var(--line);margin-top:14px}.bar i{display:block;height:100%;width:0;background:var(--brass);transition:width .2s}
 #toast{position:fixed;bottom:calc(104px + env(safe-area-inset-bottom));inset-inline:0;margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;z-index:10;opacity:0;transition:opacity .2s;pointer-events:none}
@@ -201,7 +203,7 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
   <div class="acts">
    <button class="btn" id="prev" disabled>معاينة</button>
    <button class="btn pri" id="saveLib" disabled>حفظ في مكتبتي</button>
-   <button class="btn" id="saveDl" disabled>حفظ وتنزيل</button>
+   <button class="btn" id="saveDl" disabled>حفظ ومشاركة</button>
   </div>
  </div>
 </section>
@@ -231,6 +233,11 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
   <div class="link nochev" style="cursor:default;flex-wrap:wrap"><span class="ic">◐</span><b>المظهر</b><span></span><div class="chips" id="thSeg" style="margin:0"><button data-v="light">نهاري</button><button data-v="dark">ليلي</button><button data-v="auto">تلقائي</button></div></div>
  </div>
  <div class="card">
+  <div class="ch"><h2>للتواصل</h2><span class="sub">ملاحظة أو اقتراح أو مشكلة؟ راسلنا</span></div>
+  <a class="link" href="https://wa.me/966554702585" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:12px">و</span><b>واتساب</b><span dir="ltr" style="text-align:end">0554702585</span></a>
+  <a class="link" href="tel:0554702585" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:12px">☎</span><b>اتصال</b><span dir="ltr" style="text-align:end">0554702585</span></a>
+ </div>
+ <div class="card">
   <div class="ch"><h2>إعدادات التسجيل</h2><span class="sub">تُحفظ على هذا الجهاز</span></div>
   <div class="cb">
    <p class="note" style="margin:0 0 6px;font-size:14px">إعداداتك المفضّلة تُطبَّق تلقائياً على كل تلاوة جديدة، ويمكنك تعديلها لأي تلاوة من صفحة «التسجيل».</p>
@@ -258,7 +265,7 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
    <h3>٣. سجدة التلاوة</h3><p>تُكتشف تلقائياً، فتُحذف السجدة وتُوصل القراءة بعدها مباشرة.</p>
    <h3>٤. تحسين الصوت</h3><p>يخفف الطنين والأصوات المنخفضة ويوازن ارتفاع الصوت.</p>
    <h3>٥. المراجعة</h3><p>افتح «تفاصيل المقاطع وحدود القص» لترى الخط الزمني بالألوان. اضغط ▶ لسماع أي مقطع، وأوقف أي مقطع لا تريده.</p>
-   <h3>٦. الحفظ</h3><p>«حفظ في مكتبتي» يحفظ التلاوة داخل متصفحك على هذا الجهاز، و«حفظ وتنزيل» ينزّلها كملف m4a يشتغل على الجوال وواتساب.</p>
+   <h3>٦. الحفظ</h3><p>«حفظ في مكتبتي» يحفظ التلاوة داخل متصفحك على هذا الجهاز، و«حفظ ومشاركة» يفتح لك نافذة المشاركة في جوالك لترسلها على واتساب أو تحفظها في الملفات.</p>
    <h3>٧. مكتبتي والدمج</h3><p>من «مكتبتي» شغّل أو نزّل أو احذف أي تلاوة. اضغط «دمج تلاوات» واختر «للدمج» على عدة تلاوات، رتّبها، اختر الفاصل، ثم «دمج».</p>
    <h3>٨. الخصوصية</h3><p>كل المعالجة على جهازك ولا يُرسل أي ملف لأي خادم. مسح بيانات المتصفح يمسح المكتبة، فنزّل اللي يهمك.</p>
    <button class="back" data-go="record">رجوع</button>
@@ -272,6 +279,7 @@ nav a[aria-current=page]::before{content:"";position:absolute;top:-3px;inset-inl
 <button id="stopBtn" class="btn pri" hidden>■ إيقاف</button>
 <div id="busy" hidden><div><b id="bMsg">جاري المعالجة…</b><div class="bar"><i id="bBar"></i></div></div></div>
 <div id="toast" role="status"></div>
+<div id="done" hidden><div><b id="dMsg">تم الحفظ في مكتبتي</b><p id="dName"></p><div class="dacts"><button class="btn pri" id="dShare">مشاركة</button><button class="btn" id="dDl">تنزيل</button></div><button class="btn block" id="dClose" style="margin-top:8px">متابعة</button></div></div>
 
 <nav>
  <a href="#record"><svg viewBox="0 0 24 24"><path d="M12 3v18M8 7v10M16 7v10M4 10v4M20 10v4"/></svg>التسجيل</a>
@@ -373,10 +381,10 @@ async function encode(x,prog){
  try{
   if(!window.AudioEncoder)throw 0;
   const cfg=sr=>({codec:'mp4a.40.2',sampleRate:sr,numberOfChannels:1,bitrate:sr===SR?64000:96000});
-  let sr=0;for(const r of [SR,48000,44100]){const q=await AudioEncoder.isConfigSupported(cfg(r)).catch(()=>({}));if(q.supported){sr=r;break}}
+  let sr=0;for(const r of [48000,44100,SR]){const q=await AudioEncoder.isConfigSupported(cfg(r)).catch(()=>({}));if(q.supported){sr=r;break}}
   if(!sr)throw 0;const data=sr===SR?x:await resample(x,sr);
   const frames=[];let asc=null,err=null;
-  const enc=new AudioEncoder({output:(c,m)=>{const b=new Uint8Array(c.byteLength);c.copyTo(b);frames.push(b);const d=m&&m.decoderConfig&&m.decoderConfig.description;if(d&&!asc)asc=new Uint8Array(d.buffer?d.buffer.slice(d.byteOffset,d.byteOffset+d.byteLength):d)},error:e=>err=e});
+  const enc=new AudioEncoder({output:(c,m)=>{let b=new Uint8Array(c.byteLength);c.copyTo(b);if(b.length>7&&b[0]===0xFF&&(b[1]&0xF6)===0xF0)b=b.subarray((b[1]&1)?7:9);frames.push(b);const d=m&&m.decoderConfig&&m.decoderConfig.description;if(d&&!asc)asc=new Uint8Array(d.buffer?d.buffer.slice(d.byteOffset,d.byteOffset+d.byteLength):d)},error:e=>err=e});
   enc.configure(cfg(sr));
   const N=8192;
   for(let i=0,k=0;i<data.length;i+=N,k++){
@@ -386,7 +394,9 @@ async function encode(x,prog){
    if(k%40===0){prog&&prog(i/data.length);await sleep(0)}}
   await enc.flush();enc.close();if(err||!frames.length)throw err||0;
   if(!asc){const idx=[96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000].indexOf(sr);asc=Uint8Array.from([16|(idx>>1),((idx&1)<<7)|8])}
-  return {blob:muxM4A(sr,1,frames,asc),ext:'mp4'};
+  const blob=muxM4A(sr,1,frames,asc);
+  try{const y=await decode(blob);if(Math.abs(y.length/SR-x.length/SR)>1.5)throw 0}catch(e){throw 0}
+  return {blob,ext:'mp4'};
  }catch(e){return {blob:wav(x,SR),ext:'wav'}}}
 
 function muxM4A(sr,ch,frames,asc){
@@ -430,9 +440,17 @@ let dlP=null;const dl=()=>dlP||(dlP=(window.claude&&window.claude.use)?window.cl
 const clean=s=>String(s).replace(/[\\/:*?"<>|]+/g,'-').trim().slice(0,80)||'تلاوة';
 async function download(name,blob,ext){
  const d=await dl();
- let fn=clean(name)+'.'+(!d&&ext==='mp4'?'m4a':ext),data=blob;if(d&&ext==='wav'){data=await zip(fn,blob);fn=clean(name)+'.zip'}
+ let fn=clean(name)+'.'+(!d&&ext==='mp4'?'m4a':ext),data=d?blob:new Blob([blob],{type:ext==='mp4'?'audio/mp4':'audio/wav'});if(d&&ext==='wav'){data=await zip(fn,blob);fn=clean(name)+'.zip'}
  if(d){try{await d.save({filename:fn,data});toast('تم التنزيل')}catch(e){toast(e&&e.code==='declined'?'أُلغي التنزيل':e&&e.code==='host_unavailable'?'افتح الصفحة في المتصفح لتنزيل الملف':'تعذّر التنزيل هنا')}return}
  const a=document.createElement('a');a.href=URL.createObjectURL(data);a.download=fn;document.body.appendChild(a);a.click();a.remove()}
+
+const mimeOf=ext=>ext==='mp4'?'audio/mp4':'audio/wav';
+const fileOf=it=>new File([it.blob],clean(it.name)+'.'+(it.ext==='mp4'?'m4a':it.ext),{type:mimeOf(it.ext)});
+const canShare=()=>{try{return !!(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['x'],'a.m4a',{type:'audio/mp4'})]}))}catch(e){return false}};
+async function shareItem(it){const f=fileOf(it);
+ try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:it.name});return}}
+ catch(e){if(e&&e.name==='AbortError')return}
+ download(it.name,it.blob,it.ext)}
 
 /* ---------- التشغيل ---------- */
 const au=new Audio();au.setAttribute('playsinline','');au.preload='auto';let auUrl=null,silent=null;
@@ -508,11 +526,15 @@ $('#regs').onchange=e=>{const s=e.target.closest('[data-on]');if(s){cur.regs[+s.
 $('#wave').onclick=e=>{if(!cur)return;const b=e.currentTarget.getBoundingClientRect(),t=(b.right-e.clientX)/b.width*cur.dur,r=cur.regs.find(q=>t>=q.s-.5&&t<=q.e+.5);if(r){r.on=!r.on;refresh()}};
 async function render(){busy('جاري تجهيز التلاوة…',.1);await sleep(30);let y=build(cur.x,cur.regs,cur.o.hideGap);if(cur.o.enhance||cur.echo!=='off'){busy('جاري تحسين الصوت…',.3);y=await processAudio(y,cur.o.enhance,cur.echo)}return y}
 $('#prev').onclick=async()=>{unlock();try{const y=await render();busy();play(y)}catch(e){busy();toast('تعذّرت المعاينة')}};
-async function saveCur(andDl){
+async function saveCur(ask){
  try{const y=await render();const {blob,ext}=await encode(y,p=>busy('جاري ترميز الملف…',.4+p*.55));
-  const it={id:String(Date.now()),name:cur.name||'تلاوة',created:Date.now(),dur:y.length/SR,blob,ext};await putItem(it);busy();
-  toast('حُفظت في مكتبتي');if(andDl)await download(it.name,blob,ext);stop();next()}
+  const it={id:String(Date.now()),name:cur.name||'تلاوة',created:Date.now(),dur:y.length/SR,blob,ext};await putItem(it);busy();stop();
+  if(ask){showDone(it)}else{toast('حُفظت في مكتبتي');next()}}
  catch(e){busy();toast('تعذّر الحفظ: الملف كبير على ذاكرة الجهاز')}}
+let doneIt=null;
+function showDone(it){doneIt=it;$('#dName').textContent=it.name+' · '+fmt(it.dur);$('#dShare').textContent=canShare()?'مشاركة':'تنزيل الملف';$('#dDl').hidden=!canShare();$('#done').hidden=false}
+$('#dShare').onclick=()=>{if(doneIt)shareItem(doneIt)};$('#dDl').onclick=()=>{if(doneIt)download(doneIt.name,doneIt.blob,doneIt.ext)};
+$('#dClose').onclick=()=>{$('#done').hidden=true;doneIt=null;next()};
 $('#saveLib').onclick=()=>saveCur(false);$('#saveDl').onclick=()=>saveCur(true);
 
 /* ---------- عرض المكتبة والدمج ---------- */
@@ -520,7 +542,7 @@ let libCache=[],mlist=[],gap=0,urls=[];
 async function renderLib(){
  libCache=await getAll();const s=$('#sort').value;
  libCache.sort((a,b)=>s==='old'?a.created-b.created:s==='name'?a.name.localeCompare(b.name,'ar'):s==='dur'?b.dur-a.dur:b.created-a.created);
- $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="dt">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button class="del" data-a="del" data-id="${esc(it.id)}">حذف</button></div></div>`).join(''):'<div class="empty"><b>لا توجد تلاوات محفوظة بعد</b><p>بعد القص اضغط «حفظ في مكتبتي» لتظهر هنا مرتبة بالاسم والتاريخ والمدة.</p></div>'}
+ $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="dt">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="sh" data-id="${esc(it.id)}">مشاركة</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button class="del" data-a="del" data-id="${esc(it.id)}">حذف</button></div></div>`).join(''):'<div class="empty"><b>لا توجد تلاوات محفوظة بعد</b><p>بعد القص اضغط «حفظ في مكتبتي» لتظهر هنا مرتبة بالاسم والتاريخ والمدة.</p></div>'}
 $('#sort').onchange=renderLib;
 function playItem(it){stop();const p=$('#player'),type=it.ext==='mp4'?'audio/mp4':'audio/wav';urls.forEach(u=>URL.revokeObjectURL(u));
  let step=0;const setSrc=b=>{const u=URL.createObjectURL(b);urls.push(u);p.src=u;p.load();p.play().catch(()=>{})};
@@ -534,6 +556,7 @@ $('#lib').onclick=async e=>{
  const b=e.target.closest('button');if(!b)return;const it=libCache.find(x=>x.id===b.dataset.id);if(!it)return;
  if(b.dataset.a==='play')playItem(it);
  if(b.dataset.a==='dl')download(it.name,it.blob,it.ext);
+ if(b.dataset.a==='sh')shareItem(it);
  if(b.dataset.a==='mg'){mlist.push({name:it.name,blob:it.blob,dur:it.dur});$('#mCard').hidden=false;renderM();toast('أُضيفت إلى الدمج')}
  if(b.dataset.a==='del'){if(b.dataset.c){await delItem(it.id);renderLib()}else{b.dataset.c=1;b.textContent='تأكيد الحذف'}}};
 function renderM(){
