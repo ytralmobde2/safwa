@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صَفْوة — قصّ التلاوات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: هادئ ووقور، أداة عمل للمشرفين والأئمة
+   IDEA: محراب — قوس يحتضن التسجيل، والخط الزمني كسطر مصحف ملوّن
+   PICTURE: الخط الزمني للتسجيل بألوان: الفاتحة ذهبي، السورة لازوردي، المحذوف رمادي
+   COLOUR and TYPE: رمل فاتح + لازوردي + ذهبي، نسخ للعناوين وبليكس للنص
+   LAYOUT: عمود واحد للجوال، شريط تنقّل سفلي بثلاث تبويبات */
+:root{color-scheme:light dark;
+--bg:light-dark(#f4efe4,#0d1626);--card:light-dark(#fffdf7,#152238);--ink:light-dark(#1a2232,#ece6d8);--mute:light-dark(#6a6862,#9aa4b5);--line:light-dark(#e2dacb,#24344f);
+--lap:light-dark(#1d3d72,#8fb2ec);--lapS:light-dark(#dde6f5,#1c3157);--gold:light-dark(#a87b22,#e0b85c);--goldS:light-dark(#f3e6c6,#3a3020);--warn:light-dark(#a33a2a,#ff9b85);--on:light-dark(#fff,#0d1626)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:clip;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:"Noto Naskh Arabic",serif;line-height:1.2;margin:0;text-wrap:balance}
+header{display:flex;align-items:center;gap:12px;padding:18px max(5vw,16px) 6px;max-width:760px;margin:auto}
+header h1{font-size:32px;color:var(--lap)}header p{margin:0;color:var(--mute);font-size:14px}
+main{max-width:760px;margin:auto;padding:8px max(4vw,14px) 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-block:14px}
+h2{font-size:24px;margin-bottom:6px}h3{font-size:19px}
+.mute{color:var(--mute);font-size:14px}
+.drop{display:block;position:relative;cursor:pointer;text-align:center;padding:0;border:0;background:none}
+.drop svg{width:100%;max-width:520px;height:auto;display:block;margin:auto}
+.drop .tx{position:absolute;inset:34% 18% auto;display:grid;gap:4px}
+.drop b{font:700 clamp(19px,4.6vw,24px) "Noto Naskh Arabic",serif;color:var(--lap)}
+.drop.over svg .arch{fill:var(--lapS)}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-block:12px}
+.stats div{background:var(--bg);border-radius:12px;padding:10px;text-align:center}
+.stats b{display:block;font-size:22px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stats span{font-size:13px;color:var(--mute)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;padding-block:10px;border-top:1px solid var(--line)}
+.row label{font-weight:500}
+.step{display:flex;align-items:center;gap:4px}
+.step output{min-width:2.2em;text-align:center;font-size:20px;font-weight:600}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:16px;color:inherit}
+button{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible,.drop:focus-within svg{outline:3px solid var(--gold);outline-offset:2px}
+button.pri{background:var(--lap);color:var(--on);border-color:var(--lap);font-weight:600}
+button.sq{width:44px;padding:0;font-size:22px}
+button:disabled{opacity:.45;cursor:default}
+select,input[type=text],input[type=number]{min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg);padding:0 12px}
+input[type=text]{width:100%}input[type=number]{width:6em}
+.seg{display:inline-flex;background:var(--bg);border-radius:12px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{border:0;background:none;min-height:38px;padding:0 12px}
+.seg button[aria-pressed=true]{background:var(--card);box-shadow:0 1px 3px #0002;font-weight:600;color:var(--lap)}
+.fig{position:relative;height:120px;margin-top:10px;border-radius:12px;overflow:hidden;background:var(--bg)}
+.fig canvas{position:absolute;inset:0;width:100%;height:100%;cursor:pointer}
+.ends{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--mute);margin-top:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-inline-end:5px}
+.regs{list-style:none;margin:8px 0 0;padding:0}
+.regs li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.regs .k{width:8px;align-self:stretch;border-radius:4px}
+.regs .m{flex:1}.regs .m small{display:block;color:var(--mute);font-variant-numeric:tabular-nums}
+.regs li.off .m{opacity:.5;text-decoration:line-through}
+.sw{appearance:none;width:48px;height:28px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0}
+.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:inset .15s}
+.sw:checked{background:var(--lap)}.sw:checked::after{inset-inline-start:23px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.acts button{flex:1 1 140px}
+.note{background:var(--goldS);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:10px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:12px 0;border-top:1px solid var(--line)}
+.item .n{font-weight:600;overflow-wrap:anywhere}.item .b{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.item .b button{min-height:40px;padding:0 12px;font-size:15px}
+.item .d{font-variant-numeric:tabular-nums;color:var(--mute);white-space:nowrap}
+audio{width:100%;margin-top:8px}
+.empty{text-align:center;color:var(--mute);padding:24px 8px}
+details{border-top:1px solid var(--line);padding:10px 0}summary{cursor:pointer;font-weight:600;min-height:32px}
+details p{margin:.4em 0;color:var(--ink)}
+nav{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav a{flex:1;max-width:220px;text-align:center;padding:10px 4px 12px;color:var(--mute);text-decoration:none;font-size:14px;display:grid;justify-items:center;gap:2px}
+nav a svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8}
+nav a[aria-current=page]{color:var(--lap);font-weight:600}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:4px 16px 18px}footer b{color:var(--lap);font-weight:600}
+#busy{position:fixed;inset:0;background:#0007;display:grid;place-items:center;z-index:9;padding:20px}
+#busy[hidden]{display:none}
+#busy div{background:var(--card);border-radius:18px;padding:22px;width:min(360px,100%);text-align:center}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}
+#toast{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom));inset-inline:0;margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;z-index:10;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.on{opacity:1}
+#stopBtn{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom));inset-inline-start:16px;z-index:6}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<svg width="40" height="48" viewBox="0 0 40 48" aria-hidden="true"><path d="M4 46V22C4 11 12 4 20 2c8 2 16 9 16 20v24z" fill="var(--lap)"/><path d="M11 46V25c0-6 4-11 9-12.5 5 1.5 9 6.5 9 12.5v21z" fill="var(--gold)"/></svg>
+<div><h1>صَفْوة</h1><p>قصّ تسجيلات الصلاة وإبقاء التلاوة — على جهازك</p></div>
+</header>
+
+<main>
+<section id="v-record">
+ <div class="card" id="pick">
+  <label class="drop" id="drop">
+   <input type="file" id="file" accept="audio/*,.m4a,.mp3,.wav" multiple>
+   <svg viewBox="0 0 520 300" aria-hidden="true">
+    <path class="arch" d="M70 290V150C70 70 160 20 260 10c100 10 190 60 190 140v140z" fill="var(--bg)" stroke="var(--lap)" stroke-width="2.5" stroke-dasharray="7 7"/>
+    <g fill="var(--gold)" opacity=".85"><rect x="150" y="226" width="6" height="22" rx="3"/><rect x="164" y="214" width="6" height="46" rx="3"/><rect x="178" y="222" width="6" height="30" rx="3"/><rect x="192" y="208" width="6" height="58" rx="3"/></g>
+    <g fill="var(--lap)"><rect x="214" y="218" width="6" height="38" rx="3"/><rect x="228" y="204" width="6" height="66" rx="3"/><rect x="242" y="214" width="6" height="46" rx="3"/><rect x="256" y="200" width="6" height="74" rx="3"/><rect x="270" y="212" width="6" height="50" rx="3"/><rect x="284" y="206" width="6" height="62" rx="3"/><rect x="298" y="220" width="6" height="34" rx="3"/><rect x="312" y="210" width="6" height="54" rx="3"/><rect x="326" y="222" width="6" height="30" rx="3"/><rect x="340" y="214" width="6" height="46" rx="3"/><rect x="354" y="228" width="6" height="18" rx="3"/></g>
+   </svg>
+   <span class="tx"><b>أضف تسجيل الصلاة</b><span class="mute">اسحب الملف هنا أو اضغط للاختيار · m4a أو mp3 أو wav · يمكنك اختيار أكثر من ملف</span></span>
+  </label>
+  <p class="mute" id="status" role="status" style="text-align:center;margin:6px 0 0">الملفات تُعالج داخل متصفحك ولا تُرفع إلى أي مكان.</p>
+ </div>
+
+ <div class="card" id="work" hidden>
+  <h2>سجل القص</h2>
+  <input type="text" id="nm" aria-label="اسم التلاوة">
+  <div class="stats">
+   <div><b id="sOrig">0:00</b><span>مدة الملف</span></div>
+   <div><b id="sKeep" style="color:var(--lap)">0:00</b><span>مدة التلاوة</span></div>
+   <div><b id="sDel" style="color:var(--warn)">0:00</b><span>المحذوف</span></div>
+  </div>
+  <div class="row"><label>عدد التسليمات في التسجيل</label>
+   <div class="step"><button class="sq" id="tMinus" aria-label="إنقاص">−</button><output id="tVal">1</output><button class="sq" id="tPlus" aria-label="زيادة">+</button></div></div>
+  <div class="row"><label>الفاتحة</label>
+   <div class="seg" id="fSeg"><button data-v="0">بدون الفاتحة</button><button data-v="1">مع الفاتحة في الركعتين</button></div></div>
+  <div class="row"><label for="ech">الصدى</label>
+   <select id="ech"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
+  <div class="fig"><canvas id="wave" aria-label="الخط الزمني للتسجيل، اضغط على مقطع لإبقائه أو حذفه"></canvas></div>
+  <div class="ends"><span>البداية</span><span>النهاية</span></div>
+  <div class="legend"><span><i style="background:var(--gold)"></i>الفاتحة</span><span><i style="background:var(--lap)"></i>السورة</span><span><i style="background:var(--line)"></i>محذوف (تكبير، ركوع، سجود، سكوت)</span></div>
+  <p class="note">التسليمة = ركعتان، في كل ركعة فاتحة وسورة. سجدة التلاوة تُحذف وتُوصل القراءة بعدها. راجع المقاطع واضغط ▶ للاستماع، وأوقف أي مقطع لا تريده.</p>
+  <ul class="regs" id="regs"></ul>
+  <div class="acts">
+   <button id="prev">معاينة النتيجة</button>
+   <button class="pri" id="saveLib">حفظ في مكتبتي</button>
+   <button id="saveDl">حفظ وتنزيل</button>
+  </div>
+  <p class="mute" id="qInfo" style="margin:10px 0 0"></p>
+ </div>
+</section>
+
+<section id="v-library" hidden>
+ <div class="card">
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between"><h2>مكتبتي</h2>
+   <select id="sort" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="old">الأقدم أولاً</option><option value="name">بالاسم</option><option value="dur">بالمدة</option></select></div>
+  <audio id="player" controls hidden></audio>
+  <div id="lib"></div>
+ </div>
+ <div class="card">
+  <h2>الدمج</h2>
+  <p class="mute" style="margin-top:0">أضف تلاوات من المكتبة أو من جهازك، رتّبها، ثم ادمجها في ملف واحد.</p>
+  <div id="mlist"></div>
+  <label class="drop" style="display:inline-block"><input type="file" id="mfile" accept="audio/*,.m4a,.mp3,.wav" multiple><span style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px dashed var(--lap);border-radius:12px;color:var(--lap)">+ إضافة ملف من الجهاز</span></label>
+  <div class="row"><label>الفاصل بين التلاوات</label>
+   <div class="seg" id="gSeg"><button data-v="0">متصل</button><button data-v="1">ثانية</button><button data-v="2">ثانيتان</button><button data-v="3">٣ ثوانٍ</button></div></div>
+  <div class="acts"><button class="pri" id="merge" disabled>دمج</button></div>
+ </div>
+</section>
+
+<section id="v-prefs" hidden>
+ <div class="card">
+  <h2>إعدادات التسجيل</h2>
+  <p class="mute" style="margin-top:0">تُحفظ على هذا الجهاز وتُطبَّق على التلاوات الجديدة، ويمكنك تغييرها لكل تلاوة من صفحة التسجيل.</p>
+  <div class="row"><label for="pT">عدد التسليمات الافتراضي</label><input type="number" id="pT" min="1" max="20"></div>
+  <div class="row"><label for="pF">الفاتحة</label><select id="pF"><option value="0">بدون الفاتحة</option><option value="1">مع الفاتحة</option></select></div>
+  <div class="row"><label for="pN">تسمية التلاوة</label><select id="pN"><option value="file">اسم الملف</option><option value="date">تاريخ التسجيل</option></select></div>
+  <div class="row"><label for="pE">الصدى</label><select id="pE"><option value="off">بدون</option><option value="light">خفيف</option><option value="mid">متوسط</option><option value="strong">قوي</option></select></div>
+  <details><summary>إعدادات متقدمة للكشف</summary>
+   <div class="row"><label for="pG">أقل فاصل بين ركعتين (ثانية)</label><input type="number" id="pG" min="10" max="120"></div>
+   <div class="row"><label for="pB">أقل مدة لمقطع قراءة (ثانية)</label><input type="number" id="pB" min="2" max="30"></div>
+   <div class="row"><label for="pM">أطول وقفة داخل القراءة (ثانية)</label><input type="number" id="pM" min="1" max="8" step="0.5"></div>
+   <p class="mute">تُستخدم «أقل فاصل بين ركعتين» فقط إذا لم يكفِ عدد التسليمات لتحديد الركعات.</p>
+  </details>
+  <div class="acts"><button id="reset">استعادة الافتراضي</button></div>
+ </div>
+ <div class="card">
+  <h2>دليل الاستخدام</h2>
+  <details open><summary>التسجيل</summary><p>أضف ملف الصلاة كاملاً. يحلل الموقع الصوت، فيحذف التكبيرات والركوع والسجود والسكوت، ويُبقي القراءة. حدّد عدد التسليمات بدقة لأنه يساعد في معرفة حدود الركعات.</p></details>
+  <details><summary>المراجعة</summary><p>كل مقطع يظهر بلونه على الخط الزمني وفي القائمة. اضغط ▶ لسماعه، واستخدم المفتاح لإبقائه أو حذفه، أو اضغط عليه مباشرة في الخط الزمني.</p></details>
+  <details><summary>الحفظ</summary><p>«حفظ في مكتبتي» يحفظ التلاوة في هذا المتصفح فقط. «حفظ وتنزيل» ينزّلها أيضاً كملف mp4 صوتي يعمل على الجوال وواتساب.</p></details>
+  <details><summary>الدمج</summary><p>من مكتبتي اختر «للدمج» على عدة تلاوات، رتّبها بالأسهم، اختر الفاصل ثم اضغط «دمج». الناتج يُحفظ في المكتبة.</p></details>
+  <details><summary>الخصوصية</summary><p>كل المعالجة تتم على جهازك ولا يُرسل أي ملف إلى خادم. مسح بيانات المتصفح يمسح المكتبة.</p></details>
+ </div>
+</section>
+</main>
+<footer dir="ltr">Designed &amp; Developed by <b>YTR Team</b> © 2026</footer>
+
+<button id="stopBtn" class="pri" hidden>■ إيقاف</button>
+<div id="busy" hidden><div><b id="bMsg">جاري المعالجة…</b><div class="bar"><i id="bBar"></i></div></div></div>
+<div id="toast" role="status"></div>
+
+<nav>
+ <a href="#record"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7v6M16 7v6M4 10v2M20 10v2"/><path d="M5 20h14"/></svg>التسجيل</a>
+ <a href="#library"><svg viewBox="0 0 24 24"><path d="M5 4h4v16H5zM11 4h4v16h-4zM17 6l3 .8-3.6 13.4-3-.8"/></svg>مكتبتي</a>
+ <a href="#prefs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>الإعدادات</a>
+</nav>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+const SR=24000,HOP=0.05;
+const DEF={taslims:1,withFatiha:false,naming:'file',echo:'off',rakGap:35,minBlock:6,mergeGap:3};
+const loadS=()=>{try{return Object.assign({},DEF,JSON.parse(localStorage.getItem('safwa-set')||'{}'))}catch(e){return {...DEF}}};
+let S=loadS();
+const saveS=()=>{try{localStorage.setItem('safwa-set',JSON.stringify(S))}catch(e){}};
+const fmt=t=>{t=Math.max(0,Math.round(t));const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(s).padStart(2,'0')};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ord=['الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة'];
+let tt;const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2800)};
+const busy=(m,p)=>{$('#busy').hidden=m==null;if(m!=null){$('#bMsg').textContent=m;$('#bBar').style.width=Math.round((p||0)*100)+'%'}};
+
+/* ---------- التنقل ---------- */
+const views=['record','library','prefs'];
+function route(){let h=location.hash.slice(1);if(!views.includes(h))h='record';views.forEach(v=>$('#v-'+v).hidden=v!==h);document.querySelectorAll('nav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+h?'page':'false'));if(h==='library')renderLib();if(h==='record')requestAnimationFrame(draw)}
+addEventListener('hashchange',route);
+
+/* ---------- الصوت ---------- */
+async function decode(blob){
+ const ab=await blob.arrayBuffer();const ctx=new OfflineAudioContext(1,1,SR);
+ const b=await new Promise((res,rej)=>{const p=ctx.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej)});
+ const ch=b.numberOfChannels;if(ch===1)return b.getChannelData(0);
+ const n=b.length,out=new Float32Array(n);for(let c=0;c<ch;c++){const d=b.getChannelData(c);for(let i=0;i<n;i++)out[i]+=d[i]/ch}return out}
+function frames(x){const hop=Math.round(SR*HOP),n=Math.floor(x.length/hop),db=new Float32Array(n);for(let f=0;f<n;f++){let s=0;const o=f*hop;for(let i=0;i<hop;i++){const v=x[o+i];s+=v*v}db[f]=10*Math.log10(s/hop+1e-10)}return db}
+const pct=(a,p)=>{const s=Float32Array.from(a).sort();return s[Math.min(s.length-1,Math.floor(p*s.length))]};
+
+function analyze(c){
+ const db=c.db,lo=pct(db,.1),hi=pct(db,.95),th=lo+Math.max(6,(hi-lo)*.35);c.lo=lo;c.hi=hi;
+ const ph=[];let st=-1;
+ for(let f=0;f<=db.length;f++){const v=f<db.length&&db[f]>th;if(v&&st<0)st=f;if(!v&&st>=0){ph.push([st*HOP,f*HOP]);st=-1}}
+ const P=[];for(const p of ph){const l=P[P.length-1];if(l&&p[0]-l[1]<0.8)l[1]=p[1];else P.push(p.slice())}
+ c.phrases=P.filter(p=>p[1]-p[0]>=0.25);group(c)}
+
+function group(c){
+ const B=[];for(const p of c.phrases){const l=B[B.length-1];if(l&&p[0]-l.e<=S.mergeGap){l.e=p[1];l.p.push(p)}else B.push({s:p[0],e:p[1],p:[p]})}
+ const K=B.filter(b=>b.e-b.s>=S.minBlock);
+ const gaps=K.slice(1).map((b,i)=>({i:i+1,g:b.s-K[i].e})),R=2*c.taslims;
+ const cuts=R>1&&gaps.length>=R-1?new Set(gaps.slice().sort((a,b)=>b.g-a.g).slice(0,R-1).map(x=>x.i)):new Set(gaps.filter(x=>x.g>=S.rakGap).map(x=>x.i));
+ const raks=[];let r=null;K.forEach((b,i)=>{if(i===0||cuts.has(i)){r={blocks:[]};raks.push(r)}r.blocks.push(b)});
+ const regs=[];
+ raks.forEach((r,ri)=>{
+  const s0=r.blocks[0].s,ps=r.blocks.flatMap(b=>b.p);let best=null;
+  for(let j=1;j<ps.length;j++){const g=ps[j][0]-ps[j-1][1],t=ps[j-1][1]-s0;if(t>=20&&t<=110&&(!best||g>best.g))best={g,a:ps[j-1][1],b:ps[j][0]}}
+  const split=best&&best.g>=1;if(split)regs.push({s:s0,e:best.a,k:'f',r:ri});
+  const from=split?best.b:s0;
+  r.blocks.forEach(b=>{const s=Math.max(b.s,from);if(b.e-s>=2)regs.push({s,e:b.e,k:'s',r:ri})});
+ });
+ regs.forEach(x=>x.on=x.k==='f'?c.withFatiha:true);c.regs=regs}
+
+function build(x,regs){
+ const on=regs.filter(r=>r.on).sort((a,b)=>a.s-b.s),F=Math.round(SR*.02),parts=[];let len=0;
+ on.forEach((r,i)=>{const a=Math.max(0,Math.round((r.s-.15)*SR)),b=Math.min(x.length,Math.round((r.e+.25)*SR)),g=i?Math.round(SR*(on[i-1].r===r.r?.35:1)):0;parts.push([a,b,g]);len+=g+b-a});
+ const out=new Float32Array(Math.max(len,1));let o=0;
+ for(const [a,b,g] of parts){o+=g;const n=b-a;out.set(x.subarray(a,b),o);for(let i=0;i<F&&i<n/2;i++){const w=i/F;out[o+i]*=w;out[o+n-1-i]*=w}o+=n}
+ return out}
+
+const ECHO={light:[1.2,.16],mid:[2,.26],strong:[3,.36]};
+async function addEcho(x,lvl){
+ const e=ECHO[lvl];if(!e)return x;const [d,w]=e,tail=Math.round(d*SR);
+ const ctx=new OfflineAudioContext(1,x.length+tail,SR),b=ctx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);
+ const ir=ctx.createBuffer(1,tail,SR),ch=ir.getChannelData(0);for(let i=0;i<tail;i++)ch[i]=(Math.random()*2-1)*Math.pow(1-i/tail,3.5);
+ const src=ctx.createBufferSource();src.buffer=b;const cv=ctx.createConvolver();cv.buffer=ir;const wet=ctx.createGain();wet.gain.value=w;
+ src.connect(ctx.destination);src.connect(cv);cv.connect(wet);wet.connect(ctx.destination);src.start();
+ const y=(await ctx.startRendering()).getChannelData(0);let p=0;for(let i=0;i<y.length;i++){const a=Math.abs(y[i]);if(a>p)p=a}
+ if(p>.99){const k=.98/p;for(let i=0;i<y.length;i++)y[i]*=k}return y}
+
+async function resample(x,sr){const ctx=new OfflineAudioContext(1,Math.ceil(x.length*sr/SR),sr),b=ctx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);const s=ctx.createBufferSource();s.buffer=b;s.connect(ctx.destination);s.start();return (await ctx.startRendering()).getChannelData(0)}
+
+let muxP=null;
+const loadMux=()=>muxP||(muxP=new Promise((res,rej)=>{if(window.Mp4Muxer)return res(window.Mp4Muxer);const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/mp4-muxer@5.1.3/build/mp4-muxer.min.js';s.onload=()=>window.Mp4Muxer?res(window.Mp4Muxer):rej(new Error('mux'));s.onerror=rej;document.head.appendChild(s)}).catch(e=>{muxP=null;throw e}));
+
+async function encode(x,prog){
+ try{
+  if(!window.AudioEncoder)throw 0;
+  const cfg=sr=>({codec:'mp4a.40.2',sampleRate:sr,numberOfChannels:1,bitrate:sr===SR?64000:96000});
+  let sr=SR,data=x,sup=await AudioEncoder.isConfigSupported(cfg(SR)).catch(()=>({}));
+  if(!sup.supported){sr=48000;sup=await AudioEncoder.isConfigSupported(cfg(sr)).catch(()=>({}));if(!sup.supported)throw 0;data=await resample(x,sr)}
+  const M=await loadMux(),target=new M.ArrayBufferTarget();
+  const mux=new M.Muxer({target,audio:{codec:'aac',numberOfChannels:1,sampleRate:sr},fastStart:'in-memory',firstTimestampBehavior:'offset'});
+  let err=null;const enc=new AudioEncoder({output:(c,m)=>mux.addAudioChunk(c,m),error:e=>err=e});enc.configure(cfg(sr));
+  const N=8192;
+  for(let i=0,k=0;i<data.length;i+=N,k++){
+   if(err)throw err;const ch=data.slice(i,i+N);
+   const ad=new AudioData({format:'f32-planar',sampleRate:sr,numberOfFrames:ch.length,numberOfChannels:1,timestamp:Math.round(i/sr*1e6),data:ch});enc.encode(ad);ad.close();
+   while(enc.encodeQueueSize>40)await sleep(4);
+   if(k%40===0){prog&&prog(i/data.length);await sleep(0)}}
+  await enc.flush();enc.close();if(err)throw err;mux.finalize();
+  return {blob:new Blob([target.buffer],{type:'audio/mp4'}),ext:'mp4'};
+ }catch(e){return {blob:wav(x,SR),ext:'wav'}}}
+
+function wav(x,sr){const n=x.length,b=new ArrayBuffer(44+n*2),v=new DataView(b),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+ w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+ for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,x[i]));v.setInt16(44+i*2,s<0?s*32768:s*32767,true)}return new Blob([b],{type:'audio/wav'})}
+
+const CRC=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+async function zip(name,blob){
+ const d=new Uint8Array(await blob.arrayBuffer());let c=0xFFFFFFFF;for(let i=0;i<d.length;i++)c=CRC[(c^d[i])&255]^(c>>>8);c=(c^0xFFFFFFFF)>>>0;
+ const fn=new TextEncoder().encode(name),lh=new DataView(new ArrayBuffer(30)),ch=new DataView(new ArrayBuffer(46)),e=new DataView(new ArrayBuffer(22));
+ lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(12,0x21,true);lh.setUint32(14,c,true);lh.setUint32(18,d.length,true);lh.setUint32(22,d.length,true);lh.setUint16(26,fn.length,true);
+ ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint16(14,0x21,true);ch.setUint32(16,c,true);ch.setUint32(20,d.length,true);ch.setUint32(24,d.length,true);ch.setUint16(28,fn.length,true);
+ e.setUint32(0,0x06054b50,true);e.setUint16(8,1,true);e.setUint16(10,1,true);e.setUint32(12,46+fn.length,true);e.setUint32(16,30+fn.length+d.length,true);
+ return new Blob([lh,fn,d,ch,fn,e],{type:'application/zip'})}
+
+let dlP=null;const dl=()=>dlP||(dlP=(window.claude&&window.claude.use)?window.claude.use('downloads').catch(()=>null):Promise.resolve(null));
+const clean=s=>String(s).replace(/[\\/:*?"<>|]+/g,'-').trim().slice(0,80)||'تلاوة';
+async function download(name,blob,ext){
+ const d=await dl();
+ let fn=clean(name)+'.'+(!d&&ext==='mp4'?'m4a':ext),data=blob;if(d&&ext==='wav'){data=await zip(fn,blob);fn=clean(name)+'.zip'}
+ if(d){try{await d.save({filename:fn,data});toast('تم التنزيل')}catch(e){toast(e&&e.code==='declined'?'أُلغي التنزيل':e&&e.code==='host_unavailable'?'افتح الصفحة في المتصفح لتنزيل الملف':'تعذّر التنزيل هنا')}return}
+ const a=document.createElement('a');a.href=URL.createObjectURL(data);a.download=fn;document.body.appendChild(a);a.click();a.remove()}
+
+/* ---------- التشغيل ---------- */
+let actx=null,playing=null;
+function stop(){if(playing){try{playing.stop()}catch(e){}playing=null}$('#stopBtn').hidden=true}
+function play(x){stop();try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();actx.resume&&actx.resume();const b=actx.createBuffer(1,x.length,SR);b.copyToChannel(x,0);const s=actx.createBufferSource();s.buffer=b;s.connect(actx.destination);s.start();playing=s;$('#stopBtn').hidden=false;s.onended=()=>{if(playing===s)stop()}}catch(e){toast('تعذّر التشغيل')}}
+$('#stopBtn').onclick=stop;
+
+/* ---------- المكتبة (IndexedDB) ---------- */
+let memLib=[],dbP=null;
+const idb=()=>dbP||(dbP=new Promise((res,rej)=>{try{const r=indexedDB.open('safwa',1);r.onupgradeneeded=()=>r.result.createObjectStore('items',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}));
+async function tx(mode,fn){const db=await idb();return new Promise((res,rej)=>{const t=db.transaction('items',mode),r=fn(t.objectStore('items'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})}
+const getAll=()=>tx('readonly',s=>s.getAll()).catch(()=>memLib.slice());
+const putItem=it=>tx('readwrite',s=>s.put(it)).catch(()=>{memLib=memLib.filter(m=>m.id!==it.id);memLib.push(it)});
+const delItem=id=>tx('readwrite',s=>s.delete(id)).catch(()=>{memLib=memLib.filter(m=>m.id!==id)});
+
+/* ---------- التسجيل ---------- */
+let queue=[],cur=null;
+const baseName=f=>f.name.replace(/\.[^.]+$/,'');
+const dateName=d=>'تلاوة '+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function addFiles(fs){const a=[...fs].filter(f=>/^audio\//.test(f.type)||/\.(m4a|mp3|wav|aac|ogg|opus)$/i.test(f.name));if(!a.length){toast('اختر ملفاً صوتياً');return}queue.push(...a);if(!cur)next();else qInfo()}
+function qInfo(){$('#qInfo').textContent=queue.length?'في الانتظار: '+queue.length+' ملف — سيُفتح التالي بعد الحفظ':''}
+async function next(){
+ const f=queue.shift();qInfo();if(!f){cur=null;$('#work').hidden=true;return}
+ busy('جاري قراءة «'+f.name+'»…',.2);await sleep(30);
+ try{const x=await decode(f);busy('جاري تحليل الصوت…',.7);await sleep(30);
+  const d=new Date(f.lastModified||Date.now());
+  cur={name:S.naming==='date'?dateName(d):baseName(f),x,dur:x.length/SR,db:frames(x),taslims:S.taslims,withFatiha:S.withFatiha,echo:S.echo};
+  analyze(cur);busy();showCur()}
+ catch(e){busy();$('#status').textContent='تعذّر فتح «'+f.name+'». جرّب ملف mp3 أو m4a آخر.';cur=null;next()}}
+function showCur(){$('#work').hidden=false;$('#nm').value=cur.name;$('#ech').value=cur.echo;refresh();$('#work').scrollIntoView({behavior:'smooth',block:'start'})}
+function refresh(){
+ if(!cur)return;$('#tVal').textContent=cur.taslims;
+ $('#fSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.v==='1')===cur.withFatiha)));
+ const keep=cur.regs.filter(r=>r.on).reduce((a,r)=>a+r.e-r.s,0);
+ $('#sOrig').textContent=fmt(cur.dur);$('#sKeep').textContent=fmt(keep);$('#sDel').textContent=fmt(cur.dur-keep);
+ $('#regs').innerHTML=cur.regs.length?cur.regs.map((r,i)=>`<li class="${r.on?'':'off'}"><span class="k" style="background:var(${r.k==='f'?'--gold':'--lap'})"></span><button class="sq" data-play="${i}" aria-label="استماع">▶</button><span class="m">الركعة ${ord[r.r]||r.r+1} · ${r.k==='f'?'الفاتحة':'السورة'}<small>${fmt(r.s)} – ${fmt(r.e)} · ${fmt(r.e-r.s)}</small></span><input type="checkbox" class="sw" data-on="${i}" ${r.on?'checked':''} aria-label="إبقاء المقطع"></li>`).join(''):'<li class="mute">لم يُعثر على قراءة واضحة. جرّب تقليل «أقل مدة لمقطع قراءة» من الإعدادات المتقدمة.</li>';
+ $('#saveLib').disabled=$('#saveDl').disabled=$('#prev').disabled=!keep;draw()}
+function draw(){
+ const cv=$('#wave');if(!cur||$('#work').hidden)return;const W=cv.clientWidth,H=cv.clientHeight;if(!W)return;
+ const dpr=devicePixelRatio||1;cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+ const cs=getComputedStyle(document.body),col=n=>cs.getPropertyValue(n).trim(),D=cur.dur,X=t=>W-t/D*W;
+ cur.regs.forEach(r=>{g.fillStyle=col(r.k==='f'?'--goldS':'--lapS');if(r.on)g.fillRect(X(r.e),0,X(r.s)-X(r.e),H)});
+ const db=cur.db,n=db.length,lo=cur.lo,rg=Math.max(10,cur.hi-lo+6);
+ for(let px=0;px<W;px++){const t0=(W-px-1)/W*D,t1=(W-px)/W*D;let m=-200;for(let f=Math.floor(t0/HOP);f<Math.min(n,Math.ceil(t1/HOP));f++)if(db[f]>m)m=db[f];
+  const h=Math.max(1,Math.min(1,(m-lo)/rg)*(H-16));const t=(t0+t1)/2,r=cur.regs.find(q=>t>=q.s&&t<=q.e);
+  g.fillStyle=r&&r.on?col(r.k==='f'?'--gold':'--lap'):col('--line');g.fillRect(px,(H-h)/2,1,h)}
+ cur.regs.forEach(r=>{g.fillStyle=r.on?col(r.k==='f'?'--gold':'--lap'):col('--mute');g.fillRect(X(r.e),H-5,Math.max(2,X(r.s)-X(r.e)),5)})}
+const ro=new ResizeObserver(()=>draw());ro.observe($('#wave'));
+
+$('#file').onchange=e=>{addFiles(e.target.files);e.target.value=''};
+const dz=$('#drop');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');addFiles(e.dataTransfer.files)});
+$('#nm').oninput=e=>{if(cur)cur.name=e.target.value};
+$('#ech').onchange=e=>{if(cur)cur.echo=e.target.value};
+const setT=v=>{if(!cur)return;cur.taslims=Math.max(1,Math.min(20,v));group(cur);refresh()};
+$('#tMinus').onclick=()=>setT(cur.taslims-1);$('#tPlus').onclick=()=>setT(cur.taslims+1);
+$('#fSeg').onclick=e=>{const b=e.target.closest('button');if(!b||!cur)return;cur.withFatiha=b.dataset.v==='1';cur.regs.forEach(r=>{if(r.k==='f')r.on=cur.withFatiha});refresh()};
+$('#regs').onclick=e=>{const p=e.target.closest('[data-play]');if(p){const r=cur.regs[+p.dataset.play];play(cur.x.subarray(Math.max(0,Math.round((r.s-.15)*SR)),Math.round((r.e+.25)*SR)))}};
+$('#regs').onchange=e=>{const s=e.target.closest('[data-on]');if(s){cur.regs[+s.dataset.on].on=s.checked;refresh()}};
+$('#wave').onclick=e=>{if(!cur)return;const b=e.currentTarget.getBoundingClientRect(),t=(b.right-e.clientX)/b.width*cur.dur,r=cur.regs.find(q=>t>=q.s-.5&&t<=q.e+.5);if(r){r.on=!r.on;refresh()}};
+async function render(){busy('جاري تجهيز التلاوة…',.1);await sleep(30);let y=build(cur.x,cur.regs);if(cur.echo!=='off'){busy('جاري إضافة الصدى…',.3);y=await addEcho(y,cur.echo)}return y}
+$('#prev').onclick=async()=>{try{const y=await render();busy();play(y)}catch(e){busy();toast('تعذّرت المعاينة')}};
+async function saveCur(andDl){
+ try{const y=await render();const {blob,ext}=await encode(y,p=>busy('جاري ترميز الملف…',.4+p*.55));
+  const it={id:String(Date.now()),name:cur.name||'تلاوة',created:Date.now(),dur:y.length/SR,blob,ext};await putItem(it);busy();
+  toast('حُفظت في مكتبتي');if(andDl)await download(it.name,blob,ext);stop();next()}
+ catch(e){busy();toast('تعذّر الحفظ: الملف كبير على ذاكرة الجهاز')}}
+$('#saveLib').onclick=()=>saveCur(false);$('#saveDl').onclick=()=>saveCur(true);
+
+/* ---------- عرض المكتبة والدمج ---------- */
+let libCache=[],mlist=[],gap=0,urls=[];
+async function renderLib(){
+ libCache=await getAll();const s=$('#sort').value;
+ libCache.sort((a,b)=>s==='old'?a.created-b.created:s==='name'?a.name.localeCompare(b.name,'ar'):s==='dur'?b.dur-a.dur:b.created-a.created);
+ $('#lib').innerHTML=libCache.length?libCache.map(it=>`<div class="item"><span class="n">${esc(it.name)}</span><span class="d">${fmt(it.dur)}</span><span class="mute" style="grid-column:1/-1">${esc(new Date(it.created).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn'))}</span><div class="b"><button data-a="play" data-id="${esc(it.id)}">▶ تشغيل</button><button data-a="dl" data-id="${esc(it.id)}">تنزيل</button><button data-a="mg" data-id="${esc(it.id)}">+ للدمج</button><button data-a="del" data-id="${esc(it.id)}" style="color:var(--warn)">حذف</button></div></div>`).join(''):'<p class="empty">لا توجد تلاوات بعد. احفظ أول تلاوة من صفحة التسجيل.</p>'}
+$('#sort').onchange=renderLib;
+$('#lib').onclick=async e=>{
+ const b=e.target.closest('button');if(!b)return;const it=libCache.find(x=>x.id===b.dataset.id);if(!it)return;
+ if(b.dataset.a==='play'){stop();const p=$('#player');urls.forEach(u=>URL.revokeObjectURL(u));urls=[URL.createObjectURL(it.blob)];p.src=urls[0];p.hidden=false;p.play().catch(()=>{})}
+ if(b.dataset.a==='dl')download(it.name,it.blob,it.ext);
+ if(b.dataset.a==='mg'){mlist.push({name:it.name,blob:it.blob,dur:it.dur});renderM();toast('أُضيفت إلى الدمج')}
+ if(b.dataset.a==='del'){if(b.dataset.c){await delItem(it.id);renderLib()}else{b.dataset.c=1;b.textContent='تأكيد الحذف'}}};
+function renderM(){
+ $('#mlist').innerHTML=mlist.length?mlist.map((m,i)=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto auto auto auto;align-items:center"><span class="n">${i+1}. ${esc(m.name)}</span><span class="d">${m.dur?fmt(m.dur):''}</span><button class="sq" data-m="up" data-i="${i}" aria-label="أعلى" ${i?'':'disabled'}>▲</button><button class="sq" data-m="dn" data-i="${i}" aria-label="أسفل" ${i<mlist.length-1?'':'disabled'}>▼</button><button class="sq" data-m="rm" data-i="${i}" aria-label="إزالة">×</button></div>`).join(''):'<p class="empty" style="padding:10px">لم تُضف تلاوات للدمج.</p>';
+ $('#merge').disabled=mlist.length<2;$('#gSeg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.v===gap)))}
+$('#mlist').onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
+ if(b.dataset.m==='up')[mlist[i-1],mlist[i]]=[mlist[i],mlist[i-1]];if(b.dataset.m==='dn')[mlist[i+1],mlist[i]]=[mlist[i],mlist[i+1]];if(b.dataset.m==='rm')mlist.splice(i,1);renderM()};
+$('#mfile').onchange=e=>{[...e.target.files].forEach(f=>mlist.push({name:baseName(f),blob:f,dur:0}));e.target.value='';renderM()};
+$('#gSeg').onclick=e=>{const b=e.target.closest('button');if(b){gap=+b.dataset.v;renderM()}};
+$('#merge').onclick=async()=>{
+ try{const parts=[];for(let i=0;i<mlist.length;i++){busy('جاري قراءة '+(i+1)+' من '+mlist.length+'…',i/mlist.length*.4);parts.push(await decode(mlist[i].blob))}
+  const G=Math.round(gap*SR),F=Math.round(SR*.01),len=parts.reduce((a,p)=>a+p.length,0)+G*(parts.length-1),out=new Float32Array(len);let o=0;
+  parts.forEach((p,i)=>{if(i)o+=G;out.set(p,o);for(let k=0;k<F&&k<p.length/2;k++){const w=k/F;out[o+k]*=w;out[o+p.length-1-k]*=w}o+=p.length});
+  const {blob,ext}=await encode(out,p=>busy('جاري ترميز الملف المدموج…',.45+p*.5));
+  await putItem({id:String(Date.now()),name:'دمج '+mlist.length+' تلاوات',created:Date.now(),dur:len/SR,blob,ext});
+  busy();mlist=[];renderM();renderLib();toast('حُفظ الملف المدموج في مكتبتي')}
+ catch(e){busy();toast('تعذّر الدمج')}};
+
+/* ---------- الإعدادات ---------- */
+const P={pT:'taslims',pF:'withFatiha',pN:'naming',pE:'echo',pG:'rakGap',pB:'minBlock',pM:'mergeGap'};
+function fillP(){for(const [id,k] of Object.entries(P)){const el=$('#'+id);el.value=k==='withFatiha'?(S[k]?'1':'0'):S[k]}}
+for(const [id,k] of Object.entries(P))$('#'+id).onchange=e=>{let v=e.target.value;if(k==='withFatiha')v=v==='1';else if(typeof DEF[k]==='number'){v=+v;if(!isFinite(v)||v<=0){v=DEF[k];e.target.value=v}}S[k]=v;saveS();if(cur&&['rakGap','minBlock','mergeGap'].includes(k)){group(cur);refresh()}};
+$('#reset').onclick=()=>{S={...DEF};saveS();fillP();toast('استُعيدت الإعدادات الافتراضية')};
+
+fillP();renderM();route();dl();
+}
+</script>
+</body>
+</html>
